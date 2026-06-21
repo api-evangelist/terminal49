@@ -1,0 +1,89 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Terminal49
+providerId: terminal49
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Container Tracking
+- Ocean Freight
+- Supply Chain
+- Logistics
+- Shipping
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Terminal49 spend. Terminal49 bills primarily on the number of
+  containers tracked, with a free developer key and a forever-free monthly
+  visibility allowance, then sales-led paid subscriptions and enterprise
+  agreements for higher volumes. The per-container rate decreases with volume.
+  Exact rates are sales-led and not fully public, so cost figures are not
+  reconciled in this artifact.
+notes: >-
+  Per-container rates and tier thresholds are negotiated with Terminal49 sales;
+  verify against the pricing pages during reconciliation.
+sources:
+- https://terminal49.com/api-pricing
+- https://terminal49.com/pricing
+- https://terminal49.com/docs/api-docs/useful-info/pricing
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Terminal49
+serviceCategory: Supply Chain and Logistics
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+focusColumns:
+  ServiceName: Terminal49 Container Tracking API
+  ServiceCategory: Supply Chain and Logistics
+  ProviderName: Terminal49
+  PublisherName: Terminal49
+  InvoiceIssuerName: Terminal49
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Usage-Based
+meters:
+- name: containers_tracked
+  description: Containers actively tracked, the primary billing dimension; rate decreases with volume.
+  unit: containers
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: tracking_requests
+  description: Tracking requests submitted (BOL, booking, or container number); each resolves into shipments and containers.
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - account
+- name: api_requests
+  description: API requests made against the v2 endpoints; subject to the 100 RPM rate limit, not separately billed.
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - account
+  - token
+principles:
+- name: Visibility
+  description: Track active container counts in the Developer Portal against the plan allowance.
+- name: Allocation
+  description: Tag tracking requests and shipments with ref_numbers to map containers to internal cost centers.
+- name: Optimization
+  description: Stop tracking on delivered shipments to free active-container slots; batch tracking requests to avoid duplicate containers.
+- name: Accountability
+  description: Review monthly container volume against the negotiated tier and renegotiate as volume grows.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

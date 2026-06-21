@@ -1,0 +1,385 @@
+{
+  "item": [
+    {
+      "name": "Tracking Requests",
+      "description": {
+        "content": "Submit a Bill of Lading, booking, or container number plus carrier SCAC to begin tracking.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "name": "List tracking requests",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/tracking_requests",
+              "path": ["tracking_requests"],
+              "host": ["{{baseUrl}}"]
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/vnd.api+json" },
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "method": "GET"
+          }
+        },
+        {
+          "name": "Create a tracking request",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/tracking_requests",
+              "path": ["tracking_requests"],
+              "host": ["{{baseUrl}}"]
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/vnd.api+json" },
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"type\": \"tracking_request\",\n    \"attributes\": {\n      \"request_number\": \"<bill_of_lading_or_container_number>\",\n      \"request_type\": \"bill_of_lading\",\n      \"scac\": \"<carrier_scac>\",\n      \"ref_numbers\": []\n    }\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Retrieve a tracking request",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/tracking_requests/:id",
+              "path": ["tracking_requests", ":id"],
+              "host": ["{{baseUrl}}"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "GET"
+          }
+        },
+        {
+          "name": "Edit a tracking request",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/tracking_requests/:id",
+              "path": ["tracking_requests", ":id"],
+              "host": ["{{baseUrl}}"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/vnd.api+json" },
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"type\": \"tracking_request\",\n    \"id\": \":id\",\n    \"attributes\": {\n      \"ref_numbers\": []\n    }\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Shipments",
+      "item": [
+        {
+          "name": "List shipments",
+          "request": {
+            "url": { "raw": "{{baseUrl}}/shipments", "path": ["shipments"], "host": ["{{baseUrl}}"] },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "GET"
+          }
+        },
+        {
+          "name": "Retrieve a shipment",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/shipments/:id",
+              "path": ["shipments", ":id"],
+              "host": ["{{baseUrl}}"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "GET"
+          }
+        },
+        {
+          "name": "Stop tracking a shipment",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/shipments/:id/stop_tracking",
+              "path": ["shipments", ":id", "stop_tracking"],
+              "host": ["{{baseUrl}}"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "POST"
+          }
+        },
+        {
+          "name": "Resume tracking a shipment",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/shipments/:id/resume_tracking",
+              "path": ["shipments", ":id", "resume_tracking"],
+              "host": ["{{baseUrl}}"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Containers",
+      "item": [
+        {
+          "name": "List containers",
+          "request": {
+            "url": { "raw": "{{baseUrl}}/containers", "path": ["containers"], "host": ["{{baseUrl}}"] },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "GET"
+          }
+        },
+        {
+          "name": "Retrieve a container",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/containers/:id",
+              "path": ["containers", ":id"],
+              "host": ["{{baseUrl}}"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "GET"
+          }
+        },
+        {
+          "name": "Force a container data refresh",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/containers/:id/refresh",
+              "path": ["containers", ":id", "refresh"],
+              "host": ["{{baseUrl}}"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "POST"
+          }
+        },
+        {
+          "name": "Retrieve container GeoJSON map",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/containers/:id/map",
+              "path": ["containers", ":id", "map"],
+              "host": ["{{baseUrl}}"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transport Events",
+      "item": [
+        {
+          "name": "List transport events for a container",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/containers/:id/transport_events",
+              "path": ["containers", ":id", "transport_events"],
+              "host": ["{{baseUrl}}"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "GET"
+          }
+        },
+        {
+          "name": "List transport events",
+          "request": {
+            "url": { "raw": "{{baseUrl}}/transport_events", "path": ["transport_events"], "host": ["{{baseUrl}}"] },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Terminals & Shipping Lines",
+      "item": [
+        {
+          "name": "List shipping lines",
+          "request": {
+            "url": { "raw": "{{baseUrl}}/shipping_lines", "path": ["shipping_lines"], "host": ["{{baseUrl}}"] },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "GET"
+          }
+        },
+        {
+          "name": "Retrieve a shipping line",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/shipping_lines/:id",
+              "path": ["shipping_lines", ":id"],
+              "host": ["{{baseUrl}}"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "GET"
+          }
+        },
+        {
+          "name": "Retrieve a terminal",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/terminals/:id",
+              "path": ["terminals", ":id"],
+              "host": ["{{baseUrl}}"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "List webhooks",
+          "request": {
+            "url": { "raw": "{{baseUrl}}/webhooks", "path": ["webhooks"], "host": ["{{baseUrl}}"] },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "GET"
+          }
+        },
+        {
+          "name": "Create a webhook",
+          "request": {
+            "url": { "raw": "{{baseUrl}}/webhooks", "path": ["webhooks"], "host": ["{{baseUrl}}"] },
+            "header": [
+              { "key": "Content-Type", "value": "application/vnd.api+json" },
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"type\": \"webhook\",\n    \"attributes\": {\n      \"url\": \"https://example.com/terminal49/webhook\",\n      \"active\": true,\n      \"events\": [\"tracking_request.succeeded\", \"container.transport.vessel_arrived\"]\n    }\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Retrieve a webhook",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/webhooks/:id",
+              "path": ["webhooks", ":id"],
+              "host": ["{{baseUrl}}"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "GET"
+          }
+        },
+        {
+          "name": "Edit a webhook",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/webhooks/:id",
+              "path": ["webhooks", ":id"],
+              "host": ["{{baseUrl}}"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [
+              { "key": "Content-Type", "value": "application/vnd.api+json" },
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"type\": \"webhook\",\n    \"id\": \":id\",\n    \"attributes\": {\n      \"active\": false\n    }\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete a webhook",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/webhooks/:id",
+              "path": ["webhooks", ":id"],
+              "host": ["{{baseUrl}}"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "DELETE"
+          }
+        },
+        {
+          "name": "Trigger a webhook test delivery",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/webhooks/:id/test",
+              "path": ["webhooks", ":id", "test"],
+              "host": ["{{baseUrl}}"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "POST"
+          }
+        },
+        {
+          "name": "List webhook notifications",
+          "request": {
+            "url": { "raw": "{{baseUrl}}/webhook_notifications", "path": ["webhook_notifications"], "host": ["{{baseUrl}}"] },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "GET"
+          }
+        },
+        {
+          "name": "Retrieve a webhook notification",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/webhook_notifications/:id",
+              "path": ["webhook_notifications", ":id"],
+              "host": ["{{baseUrl}}"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "header": [{ "key": "Accept", "value": "application/vnd.api+json" }],
+            "method": "GET"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.terminal49.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "Authorization" },
+      { "key": "value", "value": "Token {{apiKey}}" },
+      { "key": "in", "value": "header" }
+    ]
+  },
+  "info": {
+    "_postman_id": "8f2a1c44-7b9d-4e21-9b3a-terminal49v2api",
+    "name": "Terminal49 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Terminal49 v2 container and ocean-freight tracking API (JSON:API). Token auth via the Authorization: Token YOUR_API_KEY header.\n\nContact Support:\n Name: Terminal49 Support\n Email: support@terminal49.com",
+      "type": "text/plain"
+    }
+  }
+}

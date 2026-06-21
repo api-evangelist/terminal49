@@ -1,0 +1,247 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Terminal49 API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "in": "header",
+      "name": "Authorization",
+      "value": "Token {{apiKey}}"
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Tracking Requests", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List tracking requests", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.terminal49.com/v2/tracking_requests" },
+          "docs": "List tracking requests."
+        },
+        {
+          "info": { "name": "Create a tracking request", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.terminal49.com/v2/tracking_requests",
+            "body": { "type": "json", "data": "{\"data\":{\"type\":\"tracking_request\",\"attributes\":{\"request_number\":\"\",\"request_type\":\"bill_of_lading\",\"scac\":\"\"}}}" }
+          },
+          "docs": "Ask Terminal49 to begin tracking a shipment by BOL, booking, or container number plus carrier SCAC."
+        },
+        {
+          "info": { "name": "Retrieve a tracking request", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.terminal49.com/v2/tracking_requests/:id",
+            "params": [{ "name": "id", "value": "", "type": "path" }]
+          },
+          "docs": "Retrieve a single tracking request."
+        },
+        {
+          "info": { "name": "Edit a tracking request", "type": "http" },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.terminal49.com/v2/tracking_requests/:id",
+            "params": [{ "name": "id", "value": "", "type": "path" }],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Edit a tracking request."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Shipments", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List shipments", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.terminal49.com/v2/shipments" },
+          "docs": "List shipments."
+        },
+        {
+          "info": { "name": "Retrieve a shipment", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.terminal49.com/v2/shipments/:id",
+            "params": [{ "name": "id", "value": "", "type": "path" }]
+          },
+          "docs": "Retrieve a single shipment."
+        },
+        {
+          "info": { "name": "Stop tracking a shipment", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.terminal49.com/v2/shipments/:id/stop_tracking",
+            "params": [{ "name": "id", "value": "", "type": "path" }]
+          },
+          "docs": "Stop tracking a shipment."
+        },
+        {
+          "info": { "name": "Resume tracking a shipment", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.terminal49.com/v2/shipments/:id/resume_tracking",
+            "params": [{ "name": "id", "value": "", "type": "path" }]
+          },
+          "docs": "Resume tracking a shipment."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Containers", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List containers", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.terminal49.com/v2/containers" },
+          "docs": "List containers."
+        },
+        {
+          "info": { "name": "Retrieve a container", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.terminal49.com/v2/containers/:id",
+            "params": [{ "name": "id", "value": "", "type": "path" }]
+          },
+          "docs": "Retrieve a single container."
+        },
+        {
+          "info": { "name": "Force a container data refresh", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.terminal49.com/v2/containers/:id/refresh",
+            "params": [{ "name": "id", "value": "", "type": "path" }]
+          },
+          "docs": "Force a container data refresh."
+        },
+        {
+          "info": { "name": "Retrieve container GeoJSON map", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.terminal49.com/v2/containers/:id/map",
+            "params": [{ "name": "id", "value": "", "type": "path" }]
+          },
+          "docs": "Retrieve GeoJSON map data for a container."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Transport Events", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List transport events for a container", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.terminal49.com/v2/containers/:id/transport_events",
+            "params": [{ "name": "id", "value": "", "type": "path" }]
+          },
+          "docs": "List transport events (milestones) for a container."
+        },
+        {
+          "info": { "name": "List transport events", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.terminal49.com/v2/transport_events" },
+          "docs": "List transport events."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Terminals & Shipping Lines", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List shipping lines", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.terminal49.com/v2/shipping_lines" },
+          "docs": "List supported shipping lines and SCAC codes."
+        },
+        {
+          "info": { "name": "Retrieve a shipping line", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.terminal49.com/v2/shipping_lines/:id",
+            "params": [{ "name": "id", "value": "", "type": "path" }]
+          },
+          "docs": "Retrieve a single shipping line."
+        },
+        {
+          "info": { "name": "Retrieve a terminal", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.terminal49.com/v2/terminals/:id",
+            "params": [{ "name": "id", "value": "", "type": "path" }]
+          },
+          "docs": "Retrieve a single terminal."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Webhooks", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List webhooks", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.terminal49.com/v2/webhooks" },
+          "docs": "List webhooks."
+        },
+        {
+          "info": { "name": "Create a webhook", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.terminal49.com/v2/webhooks",
+            "body": { "type": "json", "data": "{\"data\":{\"type\":\"webhook\",\"attributes\":{\"url\":\"https://example.com/terminal49/webhook\",\"active\":true,\"events\":[]}}}" }
+          },
+          "docs": "Register a webhook callback URL Terminal49 POSTs to on updates."
+        },
+        {
+          "info": { "name": "Retrieve a webhook", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.terminal49.com/v2/webhooks/:id",
+            "params": [{ "name": "id", "value": "", "type": "path" }]
+          },
+          "docs": "Retrieve a single webhook."
+        },
+        {
+          "info": { "name": "Edit a webhook", "type": "http" },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.terminal49.com/v2/webhooks/:id",
+            "params": [{ "name": "id", "value": "", "type": "path" }],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Edit a webhook."
+        },
+        {
+          "info": { "name": "Delete a webhook", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.terminal49.com/v2/webhooks/:id",
+            "params": [{ "name": "id", "value": "", "type": "path" }]
+          },
+          "docs": "Delete a webhook."
+        },
+        {
+          "info": { "name": "Trigger a webhook test delivery", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.terminal49.com/v2/webhooks/:id/test",
+            "params": [{ "name": "id", "value": "", "type": "path" }]
+          },
+          "docs": "Trigger a test delivery for a webhook."
+        },
+        {
+          "info": { "name": "List webhook notifications", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.terminal49.com/v2/webhook_notifications" },
+          "docs": "List webhook notifications that have been sent."
+        },
+        {
+          "info": { "name": "Retrieve a webhook notification", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.terminal49.com/v2/webhook_notifications/:id",
+            "params": [{ "name": "id", "value": "", "type": "path" }]
+          },
+          "docs": "Retrieve a single webhook notification."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

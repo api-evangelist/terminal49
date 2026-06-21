@@ -1,0 +1,124 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Terminal49
+providerId: terminal49
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Container Tracking
+- Ocean Freight
+- Supply Chain
+- Logistics
+- Shipping
+- Plans
+description: >-
+  Terminal49 uses a sales-led, volume-based pricing model anchored on the number
+  of containers tracked. A free developer key lets you track a small number of
+  active containers for testing, and a forever-free visibility tier covers a
+  limited number of containers per month. Higher-volume API access is sold
+  through paid subscriptions and custom quotes negotiated with sales; public
+  per-tier prices are not fully enumerated. Reported volume pricing works out to
+  roughly a few dollars per container at scale. Specific tier names and prices
+  are not reconciled in this artifact.
+notes: >-
+  Verify free-tier container limits, paid tier names, and per-container rates on
+  the Terminal49 pricing and API pricing pages during reconciliation; figures
+  here are approximate and partially derived from public reviews.
+sources:
+- https://terminal49.com/api-pricing
+- https://terminal49.com/pricing
+- https://terminal49.com/docs/api-docs/useful-info/pricing
+- https://www.terminal49.com/pricing-plans
+plans:
+- id: terminal49-developer
+  name: Developer (Free)
+  type: free
+  description: >-
+    Free developer key for testing the API against a small number of active
+    containers.
+  entries:
+  - label: Active Containers (developer key)
+    name: developer_active_containers
+    type: limit
+    metric: containers
+    limit: 10
+    timeFrame: ongoing
+    geo: global
+    unit: 1
+    price: $0
+    userMultiplied: false
+  elements:
+  - name: Tracking Requests
+  - name: Shipments
+  - name: Containers
+  - name: Webhooks
+- id: terminal49-free-visibility
+  name: Free Visibility
+  type: free
+  description: >-
+    Forever-free tier giving every company real-time container visibility for a
+    limited number of containers per month.
+  entries:
+  - label: Containers Per Month
+    name: free_containers_per_month
+    type: limit
+    metric: containers
+    limit: 50
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0
+    userMultiplied: false
+  elements:
+  - name: Real-time Container Tracking
+- id: terminal49-subscription
+  name: Subscription / Volume
+  type: paid
+  description: >-
+    Paid subscriptions for higher container volumes, metered primarily on
+    containers tracked. Per-container rate decreases with volume (reported at
+    roughly a few dollars per container at scale). Pricing is sales-led.
+  entries:
+  - label: Containers Tracked
+    name: containers_tracked
+    type: usage
+    metric: containers
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contact sales (approx. a few USD per container at volume)
+    userMultiplied: false
+  elements:
+  - name: Tracking Requests
+  - name: Shipments
+  - name: Containers
+  - name: Transport Events
+  - name: Terminals & Shipping Lines
+  - name: Webhooks
+- id: terminal49-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    High-volume and enterprise agreements with custom container volumes,
+    onboarding, and support negotiated with Terminal49 sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Volume Pricing
+  - name: Priority Support
+  - name: Onboarding
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,171 @@
+aid: terminal49
+url: https://raw.githubusercontent.com/api-evangelist/terminal49/refs/heads/main/apis.yml
+name: Terminal49
+kind: company
+description: Terminal49 is an automated container and ocean-freight tracking platform.
+  Its v2 REST API (JSON:API) lets shippers, forwarders, and logistics software track
+  Bills of Lading, bookings, and container numbers across global ocean carriers and
+  North American rail, returning normalized milestones, ETAs, terminal availability,
+  holds, demurrage fees, and last free day, with webhooks for real-time updates.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Container Tracking
+- Ocean Freight
+- Supply Chain
+- Logistics
+- Shipping
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: terminal49:tracking-requests
+  name: Terminal49 Tracking Requests API
+  tags:
+  - Tracking Requests
+  - Bill of Lading
+  - Booking
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://terminal49.com/docs/api-docs/api-reference/introduction
+  baseURL: https://api.terminal49.com/v2
+  properties:
+  - url: https://terminal49.com/docs/api-docs/getting-started/tracking-shipments-and-containers/
+    type: Documentation
+  - url: https://terminal49.com/docs/api-docs/api-reference/introduction
+    type: APIReference
+  - url: openapi/terminal49-openapi.yml
+    type: OpenAPI
+  - url: collections/terminal49.postman_collection.json
+    type: PostmanCollection
+  - url: collections/terminal49.opencollection.json
+    type: OpenCollection
+  description: Submit a Bill of Lading, booking, or container number plus carrier SCAC
+    to ask Terminal49 to begin tracking a shipment, then list, retrieve, and edit
+    those tracking requests.
+- aid: terminal49:shipments
+  name: Terminal49 Shipments API
+  tags:
+  - Shipments
+  - ETA
+  - Milestones
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://terminal49.com/docs/api-docs/getting-started/list-shipments-and-containers/
+  baseURL: https://api.terminal49.com/v2
+  properties:
+  - url: https://terminal49.com/docs/api-docs/getting-started/list-shipments-and-containers/
+    type: Documentation
+  - url: https://terminal49.com/docs/api-docs/api-reference/introduction
+    type: APIReference
+  - url: openapi/terminal49-openapi.yml
+    type: OpenAPI
+  - url: collections/terminal49.postman_collection.json
+    type: PostmanCollection
+  - url: collections/terminal49.opencollection.json
+    type: OpenCollection
+  description: List and retrieve shipments with normalized BOL data, port of lading
+    and discharge, vessel and voyage, POD ETA/ATA and destination ETA, and stop or
+    resume tracking controls.
+- aid: terminal49:containers
+  name: Terminal49 Containers API
+  tags:
+  - Containers
+  - Availability
+  - Demurrage
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://terminal49.com/docs/api-docs/getting-started/list-shipments-and-containers/
+  baseURL: https://api.terminal49.com/v2
+  properties:
+  - url: https://terminal49.com/docs/api-docs/getting-started/list-shipments-and-containers/
+    type: Documentation
+  - url: https://terminal49.com/docs/api-docs/api-reference/introduction
+    type: APIReference
+  - url: openapi/terminal49-openapi.yml
+    type: OpenAPI
+  - url: collections/terminal49.postman_collection.json
+    type: PostmanCollection
+  - url: collections/terminal49.opencollection.json
+    type: OpenCollection
+  description: List, retrieve, and refresh containers with equipment type, current
+    status, terminal availability, holds, demurrage fees, last free day, pickup
+    appointment, rail milestones, and GeoJSON map data.
+- aid: terminal49:transport-events
+  name: Terminal49 Transport Events API
+  tags:
+  - Transport Events
+  - Milestones
+  - Webhooks
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://terminal49.com/docs/api-docs/api-reference/introduction
+  baseURL: https://api.terminal49.com/v2
+  properties:
+  - url: https://terminal49.com/docs/api-docs/api-reference/introduction
+    type: APIReference
+  - url: openapi/terminal49-openapi.yml
+    type: OpenAPI
+  - url: collections/terminal49.postman_collection.json
+    type: PostmanCollection
+  - url: collections/terminal49.opencollection.json
+    type: OpenCollection
+  description: Retrieve the timeline of normalized transport events (milestones such
+    as vessel departed, vessel arrived, discharged, full out, and rail events) for
+    a container.
+- aid: terminal49:terminals-shipping-lines
+  name: Terminal49 Terminals & Shipping Lines API
+  tags:
+  - Terminals
+  - Shipping Lines
+  - SCAC
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://terminal49.com/docs/api-docs/api-reference/introduction
+  baseURL: https://api.terminal49.com/v2
+  properties:
+  - url: https://terminal49.com/docs/api-docs/api-reference/introduction
+    type: APIReference
+  - url: openapi/terminal49-openapi.yml
+    type: OpenAPI
+  - url: collections/terminal49.postman_collection.json
+    type: PostmanCollection
+  - url: collections/terminal49.opencollection.json
+    type: OpenCollection
+  description: Look up supported shipping lines and their SCAC codes, and retrieve
+    terminal reference details at destination ports.
+- aid: terminal49:webhooks
+  name: Terminal49 Webhooks API
+  tags:
+  - Webhooks
+  - Notifications
+  - Real-time
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://terminal49.com/docs/api-docs/in-depth-guides/quickstart/
+  baseURL: https://api.terminal49.com/v2
+  properties:
+  - url: https://terminal49.com/docs/api-docs/in-depth-guides/quickstart/
+    type: Documentation
+  - url: https://terminal49.com/docs/api-docs/api-reference/introduction
+    type: APIReference
+  - url: openapi/terminal49-openapi.yml
+    type: OpenAPI
+  - url: collections/terminal49.postman_collection.json
+    type: PostmanCollection
+  - url: collections/terminal49.opencollection.json
+    type: OpenCollection
+  description: Register, list, retrieve, edit, delete, and test webhooks (callback
+    URLs Terminal49 POSTs to on updates), and review the webhook notifications and
+    example payloads that have been sent.
+common:
+- type: GitHubOrganization
+  url: https://github.com/Terminal49
+- type: LinkedIn
+  url: https://www.linkedin.com/company/terminal49
+- type: Website
+  url: https://www.terminal49.com
+- type: Documentation
+  url: https://terminal49.com/docs/api-docs/api-reference/introduction
+- type: Plans
+  url: plans/terminal49-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/terminal49-rate-limits.yml
+- type: FinOps
+  url: finops/terminal49-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

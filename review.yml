@@ -1,0 +1,95 @@
+aid: terminal49
+name: Terminal49
+review:
+  question: Does Terminal49 expose a documented public webhooks (event push) API?
+  answer: true
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    Terminal49 delivers asynchronous updates via outbound HTTP webhooks
+    (server-to-server callbacks), not via WebSocket or Server-Sent Events.
+    Webhooks are modeled inside the REST OpenAPI document
+    (openapi/terminal49-openapi.yml) under the Webhooks tag, covering
+    webhook registration, testing, and the webhook_notifications log. No
+    AsyncAPI document was authored because the push mechanism is plain
+    HTTP POST callbacks fully described by the REST surface.
+findings:
+  summary: |
+    Terminal49 publishes a documented public webhooks capability as part of
+    its v2 JSON:API. Clients register a webhook (a callback URL) via
+    POST /webhooks; Terminal49 sends HTTP POST notifications to that URL
+    when tracked shipments and containers change (for example milestone
+    transport events, ETA changes, availability, and tracking_request
+    outcomes). The Developer Portal records every request, registered
+    webhook, and notification sent. Webhook deliveries can be inspected via
+    GET /webhook_notifications and replayed/tested via
+    POST /webhooks/{id}/test. There is no documented WebSocket (wss://) or
+    SSE streaming surface; the realtime mechanism is outbound HTTP webhooks
+    over the REST API.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.terminal49.com/v2
+      documented: true
+    - protocol: Webhook
+      scheme: https
+      note: Outbound HTTP POST callbacks to a client-registered URL when tracked data changes. Notifications use the JSON:API media type.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in the Terminal49 v2 API reference.
+    - protocol: SSE
+      scheme: https
+      documented: false
+      note: No Server-Sent Events streaming surface is documented; realtime updates are delivered via outbound webhooks.
+  endpointsConfirmedRest:
+    - POST   https://api.terminal49.com/v2/tracking_requests
+    - GET    https://api.terminal49.com/v2/tracking_requests
+    - GET    https://api.terminal49.com/v2/tracking_requests/{id}
+    - PATCH  https://api.terminal49.com/v2/tracking_requests/{id}
+    - GET    https://api.terminal49.com/v2/shipments
+    - GET    https://api.terminal49.com/v2/shipments/{id}
+    - PATCH  https://api.terminal49.com/v2/shipments/{id}
+    - POST   https://api.terminal49.com/v2/shipments/{id}/stop_tracking
+    - POST   https://api.terminal49.com/v2/shipments/{id}/resume_tracking
+    - GET    https://api.terminal49.com/v2/containers
+    - GET    https://api.terminal49.com/v2/containers/{id}
+    - PATCH  https://api.terminal49.com/v2/containers/{id}
+    - POST   https://api.terminal49.com/v2/containers/{id}/refresh
+    - GET    https://api.terminal49.com/v2/containers/{id}/transport_events
+    - GET    https://api.terminal49.com/v2/containers/{id}/map
+    - GET    https://api.terminal49.com/v2/transport_events
+    - GET    https://api.terminal49.com/v2/shipping_lines
+    - GET    https://api.terminal49.com/v2/shipping_lines/{id}
+    - GET    https://api.terminal49.com/v2/terminals/{id}
+    - POST   https://api.terminal49.com/v2/webhooks
+    - GET    https://api.terminal49.com/v2/webhooks
+    - GET    https://api.terminal49.com/v2/webhooks/{id}
+    - PATCH  https://api.terminal49.com/v2/webhooks/{id}
+    - DELETE https://api.terminal49.com/v2/webhooks/{id}
+    - POST   https://api.terminal49.com/v2/webhooks/{id}/test
+    - GET    https://api.terminal49.com/v2/webhook_notifications
+    - GET    https://api.terminal49.com/v2/webhook_notifications/{id}
+sources:
+  - url: https://terminal49.com/docs/api-docs/api-reference/introduction
+    type: APIReference
+    note: Base URL https://api.terminal49.com/v2; Token auth; JSON:API media type application/vnd.api+json; 100 RPM rolling-window rate limit.
+  - url: https://terminal49.com/docs/api-docs/in-depth-guides/quickstart/
+    type: Documentation
+    note: Developer Portal records requests, registered webhooks, and notifications sent; webhook is a callback URL Terminal49 HTTP POSTs to on updates.
+  - url: https://terminal49.com/docs/api-docs/getting-started/tracking-shipments-and-containers/
+    type: Documentation
+    note: Tracking requests submit BOL/booking/container plus carrier SCAC; responses are JSON:API shipments and containers.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    The asynchronous push surface is outbound HTTP webhooks, fully captured
+    in the REST OpenAPI document under the Webhooks tag (create/list/get/
+    edit/delete/test plus webhook_notifications). No WebSocket or SSE
+    surface is documented, so no AsyncAPI document was created.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,56 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Terminal49
+providerId: terminal49
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Container Tracking
+- Ocean Freight
+- Supply Chain
+- Logistics
+- Shipping
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The Terminal49 v2 API enforces a request rate limit of 100 requests per minute
+  on a rolling 60-second window per API token. Container tracking volume is
+  governed separately by the account plan (number of active containers / containers
+  per month) rather than by the request rate limit. Per-account or per-plan
+  variations beyond the documented 100 RPM are not reconciled in this artifact.
+notes: >-
+  Verify the current request rate limit and any plan-specific quotas in the
+  Terminal49 API reference during reconciliation; container volume caps are set
+  by the subscription plan, not the request rate limiter.
+sources:
+- https://terminal49.com/docs/api-docs/api-reference/introduction
+- https://terminal49.com/docs/api-docs/in-depth-guides/quickstart/
+responseCodes:
+  throttled: 429
+limits:
+- name: Requests Per Minute (RPM)
+  scope: token
+  metric: requests
+  limit: 100
+  notes: Rolling 60-second window per API token.
+- name: Active Containers
+  scope: account
+  metric: containers
+  limit: see plan
+  notes: Governed by the account plan (developer/free/subscription/enterprise), not the request rate limiter.
+- name: Containers Per Month
+  scope: account
+  metric: containers
+  limit: see plan
+  notes: Free visibility tier caps containers tracked per month; paid tiers raise or remove the cap.
+policies:
+- name: Rolling Window
+  description: The 100 RPM limit is evaluated over a rolling 60-second window per token.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
