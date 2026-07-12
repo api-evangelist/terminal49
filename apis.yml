@@ -152,6 +152,10 @@ apis:
     URLs Terminal49 POSTs to on updates), and review the webhook notifications and
     example payloads that have been sent.
 common:
+- type: DomainSecurity
+  url: security/terminal49-domain-security.yml
+- type: Authentication
+  url: authentication/terminal49-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/Terminal49
 - type: LinkedIn
@@ -166,6 +170,8 @@ common:
   url: rate-limits/terminal49-rate-limits.yml
 - type: FinOps
   url: finops/terminal49-finops.yml
+- type: Blog
+  url: https://www.terminal49.com/blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

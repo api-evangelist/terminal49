@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/terminal49-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: TokenAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: 'Token-based authentication. Send the header `Authorization: Token YOUR_API_KEY`.'
+  sources:
+  - openapi/terminal49-openapi.yml
