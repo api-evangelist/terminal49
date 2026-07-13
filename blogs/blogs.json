@@ -1,0 +1,13 @@
+{
+  "repo": "terminal49",
+  "feeds": [
+    {
+      "source": "https://www.terminal49.com/blog",
+      "feed_url": "https://www.terminal49.com/blog",
+      "title": "Terminal49 Blog",
+      "saved": 0
+    }
+  ],
+  "fetched": "2026-07-11T11:43:46Z",
+  "post_count": 15
+}
