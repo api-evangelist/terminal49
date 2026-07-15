@@ -152,6 +152,8 @@ apis:
     URLs Terminal49 POSTs to on updates), and review the webhook notifications and
     example payloads that have been sent.
 common:
+- type: AgenticAccess
+  url: agentic-access/terminal49-agentic-access.yml
 - type: DomainSecurity
   url: security/terminal49-domain-security.yml
 - type: Authentication
