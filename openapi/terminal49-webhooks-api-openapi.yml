@@ -1,0 +1,268 @@
+openapi: 3.0.1
+info:
+  title: Terminal49 Containers Webhooks API
+  description: Terminal49 v2 container and ocean-freight tracking API. A single integration to track Bills of Lading, bookings, and container numbers across global ocean carriers and North American rail, returning normalized milestones, ETAs, terminal availability, holds, demurrage fees, and last free day. The API follows the JSON:API specification; all requests and responses use the `application/vnd.api+json` media type and authenticate with a Token header.
+  termsOfService: https://www.terminal49.com/terms-of-service/
+  contact:
+    name: Terminal49 Support
+    url: https://terminal49.com/docs/api-docs/api-reference/introduction
+    email: support@terminal49.com
+  version: '2.0'
+servers:
+- url: https://api.terminal49.com/v2
+  description: Terminal49 v2 production API
+security:
+- TokenAuth: []
+tags:
+- name: Webhooks
+paths:
+  /webhooks:
+    get:
+      operationId: listWebhooks
+      tags:
+      - Webhooks
+      summary: List webhooks
+      responses:
+        '200':
+          description: A list of webhooks.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/WebhookList'
+    post:
+      operationId: createWebhook
+      tags:
+      - Webhooks
+      summary: Create a webhook
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/WebhookSingle'
+      responses:
+        '201':
+          description: The created webhook.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/WebhookSingle'
+  /webhooks/{id}:
+    get:
+      operationId: getWebhook
+      tags:
+      - Webhooks
+      summary: Retrieve a webhook
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: The requested webhook.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/WebhookSingle'
+    patch:
+      operationId: updateWebhook
+      tags:
+      - Webhooks
+      summary: Edit a webhook
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/WebhookSingle'
+      responses:
+        '200':
+          description: The updated webhook.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/WebhookSingle'
+    delete:
+      operationId: deleteWebhook
+      tags:
+      - Webhooks
+      summary: Delete a webhook
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '204':
+          description: Webhook deleted.
+  /webhooks/{id}/test:
+    post:
+      operationId: testWebhook
+      tags:
+      - Webhooks
+      summary: Trigger a test delivery for a webhook
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '202':
+          description: Test delivery triggered.
+  /webhook_notifications:
+    get:
+      operationId: listWebhookNotifications
+      tags:
+      - Webhooks
+      summary: List webhook notifications
+      parameters:
+      - $ref: '#/components/parameters/PageNumber'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: A list of webhook notifications.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/WebhookNotificationList'
+  /webhook_notifications/{id}:
+    get:
+      operationId: getWebhookNotification
+      tags:
+      - Webhooks
+      summary: Retrieve a webhook notification
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: The requested webhook notification.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/WebhookNotificationSingle'
+components:
+  parameters:
+    PageNumber:
+      name: page[number]
+      in: query
+      required: false
+      description: Page number for JSON:API pagination.
+      schema:
+        type: integer
+    PageSize:
+      name: page[size]
+      in: query
+      required: false
+      description: Number of records per page.
+      schema:
+        type: integer
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier (UUID).
+      schema:
+        type: string
+  schemas:
+    WebhookNotificationResource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - webhook_notification
+        attributes:
+          $ref: '#/components/schemas/WebhookNotificationAttributes'
+    WebhookNotificationAttributes:
+      type: object
+      properties:
+        event:
+          type: string
+        delivery_status:
+          type: string
+          enum:
+          - pending
+          - succeeded
+          - failed
+        response_status_code:
+          type: integer
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        body:
+          type: object
+          description: The JSON:API payload delivered to the webhook URL.
+    WebhookNotificationSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/WebhookNotificationResource'
+    JsonApiLinks:
+      type: object
+      properties:
+        self:
+          type: string
+        first:
+          type: string
+        prev:
+          type: string
+        next:
+          type: string
+        last:
+          type: string
+    WebhookResource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - webhook
+        attributes:
+          $ref: '#/components/schemas/WebhookAttributes'
+    WebhookNotificationList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookNotificationResource'
+        links:
+          $ref: '#/components/schemas/JsonApiLinks'
+    WebhookList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookResource'
+        links:
+          $ref: '#/components/schemas/JsonApiLinks'
+    WebhookSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/WebhookResource'
+    WebhookAttributes:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The callback URL Terminal49 POSTs notifications to.
+        active:
+          type: boolean
+        events:
+          type: array
+          items:
+            type: string
+            description: Event types to subscribe to (e.g. tracking_request.succeeded, container.transport.vessel_departed).
+        secret:
+          type: string
+          description: Shared secret used to sign notification payloads.
+        created_at:
+          type: string
+          format: date-time
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Token-based authentication. Send the header `Authorization: Token YOUR_API_KEY`.'

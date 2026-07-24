@@ -1,0 +1,231 @@
+openapi: 3.0.1
+info:
+  title: Terminal49 Containers Shipments API
+  description: Terminal49 v2 container and ocean-freight tracking API. A single integration to track Bills of Lading, bookings, and container numbers across global ocean carriers and North American rail, returning normalized milestones, ETAs, terminal availability, holds, demurrage fees, and last free day. The API follows the JSON:API specification; all requests and responses use the `application/vnd.api+json` media type and authenticate with a Token header.
+  termsOfService: https://www.terminal49.com/terms-of-service/
+  contact:
+    name: Terminal49 Support
+    url: https://terminal49.com/docs/api-docs/api-reference/introduction
+    email: support@terminal49.com
+  version: '2.0'
+servers:
+- url: https://api.terminal49.com/v2
+  description: Terminal49 v2 production API
+security:
+- TokenAuth: []
+tags:
+- name: Shipments
+paths:
+  /shipments:
+    get:
+      operationId: listShipments
+      tags:
+      - Shipments
+      summary: List shipments
+      parameters:
+      - $ref: '#/components/parameters/PageNumber'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: A list of shipments.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ShipmentList'
+  /shipments/{id}:
+    get:
+      operationId: getShipment
+      tags:
+      - Shipments
+      summary: Retrieve a shipment
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: The requested shipment.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ShipmentSingle'
+    patch:
+      operationId: updateShipment
+      tags:
+      - Shipments
+      summary: Edit a shipment
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/ShipmentSingle'
+      responses:
+        '200':
+          description: The updated shipment.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ShipmentSingle'
+  /shipments/{id}/stop_tracking:
+    post:
+      operationId: stopTrackingShipment
+      tags:
+      - Shipments
+      summary: Stop tracking a shipment
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Tracking stopped.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ShipmentSingle'
+  /shipments/{id}/resume_tracking:
+    post:
+      operationId: resumeTrackingShipment
+      tags:
+      - Shipments
+      summary: Resume tracking a shipment
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Tracking resumed.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ShipmentSingle'
+components:
+  parameters:
+    PageNumber:
+      name: page[number]
+      in: query
+      required: false
+      description: Page number for JSON:API pagination.
+      schema:
+        type: integer
+    PageSize:
+      name: page[size]
+      in: query
+      required: false
+      description: Number of records per page.
+      schema:
+        type: integer
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier (UUID).
+      schema:
+        type: string
+  schemas:
+    ShipmentAttributes:
+      type: object
+      properties:
+        bill_of_lading_number:
+          type: string
+        normalized_number:
+          type: string
+        ref_numbers:
+          type: array
+          items:
+            type: string
+        shipping_line_scac:
+          type: string
+        shipping_line_name:
+          type: string
+        shipping_line_short_name:
+          type: string
+        port_of_lading_locode:
+          type: string
+        port_of_lading_name:
+          type: string
+        port_of_discharge_locode:
+          type: string
+        port_of_discharge_name:
+          type: string
+        destination_locode:
+          type: string
+        destination_name:
+          type: string
+        pod_vessel_name:
+          type: string
+        pod_vessel_imo:
+          type: string
+        pod_voyage_number:
+          type: string
+        pol_atd_at:
+          type: string
+          format: date-time
+          nullable: true
+        pod_eta_at:
+          type: string
+          format: date-time
+          nullable: true
+        pod_ata_at:
+          type: string
+          format: date-time
+          nullable: true
+        destination_eta_at:
+          type: string
+          format: date-time
+          nullable: true
+        destination_ata_at:
+          type: string
+          format: date-time
+          nullable: true
+        line_tracking_stopped_at:
+          type: string
+          format: date-time
+          nullable: true
+        line_tracking_stopped_reason:
+          type: string
+          nullable: true
+    JsonApiLinks:
+      type: object
+      properties:
+        self:
+          type: string
+        first:
+          type: string
+        prev:
+          type: string
+        next:
+          type: string
+        last:
+          type: string
+    ShipmentResource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - shipment
+        attributes:
+          $ref: '#/components/schemas/ShipmentAttributes'
+        relationships:
+          type: object
+    ShipmentSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ShipmentResource'
+    ShipmentList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShipmentResource'
+        links:
+          $ref: '#/components/schemas/JsonApiLinks'
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Token-based authentication. Send the header `Authorization: Token YOUR_API_KEY`.'

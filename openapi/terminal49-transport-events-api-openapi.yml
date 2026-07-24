@@ -1,0 +1,151 @@
+openapi: 3.0.1
+info:
+  title: Terminal49 Containers Transport Events API
+  description: Terminal49 v2 container and ocean-freight tracking API. A single integration to track Bills of Lading, bookings, and container numbers across global ocean carriers and North American rail, returning normalized milestones, ETAs, terminal availability, holds, demurrage fees, and last free day. The API follows the JSON:API specification; all requests and responses use the `application/vnd.api+json` media type and authenticate with a Token header.
+  termsOfService: https://www.terminal49.com/terms-of-service/
+  contact:
+    name: Terminal49 Support
+    url: https://terminal49.com/docs/api-docs/api-reference/introduction
+    email: support@terminal49.com
+  version: '2.0'
+servers:
+- url: https://api.terminal49.com/v2
+  description: Terminal49 v2 production API
+security:
+- TokenAuth: []
+tags:
+- name: Transport Events
+paths:
+  /containers/{id}/transport_events:
+    get:
+      operationId: listContainerTransportEvents
+      tags:
+      - Transport Events
+      summary: List transport events for a container
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: A list of transport events.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TransportEventList'
+  /containers/{id}/raw_events:
+    get:
+      operationId: listContainerRawEvents
+      tags:
+      - Transport Events
+      summary: List raw events for a container (deprecated)
+      deprecated: true
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: A list of raw events.
+  /transport_events:
+    get:
+      operationId: listTransportEvents
+      tags:
+      - Transport Events
+      summary: List transport events
+      parameters:
+      - $ref: '#/components/parameters/PageNumber'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: A list of transport events.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TransportEventList'
+components:
+  parameters:
+    PageNumber:
+      name: page[number]
+      in: query
+      required: false
+      description: Page number for JSON:API pagination.
+      schema:
+        type: integer
+    PageSize:
+      name: page[size]
+      in: query
+      required: false
+      description: Number of records per page.
+      schema:
+        type: integer
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier (UUID).
+      schema:
+        type: string
+  schemas:
+    TransportEventList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransportEventResource'
+        links:
+          $ref: '#/components/schemas/JsonApiLinks'
+    TransportEventResource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - transport_event
+        attributes:
+          $ref: '#/components/schemas/TransportEventAttributes'
+    JsonApiLinks:
+      type: object
+      properties:
+        self:
+          type: string
+        first:
+          type: string
+        prev:
+          type: string
+        next:
+          type: string
+        last:
+          type: string
+    TransportEventAttributes:
+      type: object
+      properties:
+        event:
+          type: string
+          description: Normalized milestone name (e.g. vessel_departed, vessel_arrived, transshipment_discharged, full_out, rail_departed).
+        created_at:
+          type: string
+          format: date-time
+        timestamp:
+          type: string
+          format: date-time
+        location_locode:
+          type: string
+          nullable: true
+        timezone:
+          type: string
+          nullable: true
+        voyage_number:
+          type: string
+          nullable: true
+        vessel_name:
+          type: string
+          nullable: true
+        vessel_imo:
+          type: string
+          nullable: true
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Token-based authentication. Send the header `Authorization: Token YOUR_API_KEY`.'

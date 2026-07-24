@@ -1,0 +1,80 @@
+openapi: 3.0.1
+info:
+  title: Terminal49 Containers Terminals API
+  description: Terminal49 v2 container and ocean-freight tracking API. A single integration to track Bills of Lading, bookings, and container numbers across global ocean carriers and North American rail, returning normalized milestones, ETAs, terminal availability, holds, demurrage fees, and last free day. The API follows the JSON:API specification; all requests and responses use the `application/vnd.api+json` media type and authenticate with a Token header.
+  termsOfService: https://www.terminal49.com/terms-of-service/
+  contact:
+    name: Terminal49 Support
+    url: https://terminal49.com/docs/api-docs/api-reference/introduction
+    email: support@terminal49.com
+  version: '2.0'
+servers:
+- url: https://api.terminal49.com/v2
+  description: Terminal49 v2 production API
+security:
+- TokenAuth: []
+tags:
+- name: Terminals
+paths:
+  /terminals/{id}:
+    get:
+      operationId: getTerminal
+      tags:
+      - Terminals
+      summary: Retrieve a terminal
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: The requested terminal.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TerminalSingle'
+components:
+  schemas:
+    TerminalSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/TerminalResource'
+    TerminalResource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - terminal
+        attributes:
+          $ref: '#/components/schemas/TerminalAttributes'
+    TerminalAttributes:
+      type: object
+      properties:
+        nickname:
+          type: string
+        name:
+          type: string
+        firms_code:
+          type: string
+          nullable: true
+        smdg_code:
+          type: string
+          nullable: true
+        port_locode:
+          type: string
+  parameters:
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier (UUID).
+      schema:
+        type: string
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Token-based authentication. Send the header `Authorization: Token YOUR_API_KEY`.'
