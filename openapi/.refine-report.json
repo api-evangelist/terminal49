@@ -1,0 +1,26 @@
+{
+  "provider": "terminal49",
+  "sources": [
+    "terminal49-containers-api-openapi.yml",
+    "terminal49-shipments-api-openapi.yml",
+    "terminal49-shipping-lines-api-openapi.yml",
+    "terminal49-terminals-api-openapi.yml",
+    "terminal49-tracking-requests-api-openapi.yml",
+    "terminal49-transport-events-api-openapi.yml",
+    "terminal49-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "terminal49-containers-api-openapi.yml",
+    "terminal49-shipments-api-openapi.yml",
+    "terminal49-shipping-lines-api-openapi.yml",
+    "terminal49-terminals-api-openapi.yml",
+    "terminal49-tracking-requests-api-openapi.yml",
+    "terminal49-transport-events-api-openapi.yml",
+    "terminal49-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
