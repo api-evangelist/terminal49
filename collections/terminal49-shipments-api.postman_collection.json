@@ -1,0 +1,543 @@
+{
+  "item": [
+    {
+      "id": "dbc091e9-f04f-4021-a49b-f81a0b8d29a2",
+      "name": "Shipments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c0c9a005-8b9b-48a2-b3e8-6c97c169e1f2",
+          "name": "List shipments",
+          "request": {
+            "name": "List shipments",
+            "description": {},
+            "url": {
+              "path": [
+                "shipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[number]",
+                  "value": "<integer>",
+                  "description": "Page number for JSON:API pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>",
+                  "description": "Number of records per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "27ba4d5f-077c-4289-887f-20106ac24768",
+              "name": "A list of shipments.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[number]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"shipment\",\n      \"attributes\": {\n        \"bill_of_lading_number\": \"string\",\n        \"normalized_number\": \"string\",\n        \"ref_numbers\": [\n          \"string\",\n          \"string\"\n        ],\n        \"shipping_line_scac\": \"string\",\n        \"shipping_line_name\": \"string\",\n        \"shipping_line_short_name\": \"string\",\n        \"port_of_lading_locode\": \"string\",\n        \"port_of_lading_name\": \"string\",\n        \"port_of_discharge_locode\": \"string\",\n        \"port_of_discharge_name\": \"string\",\n        \"destination_locode\": \"string\",\n        \"destination_name\": \"string\",\n        \"pod_vessel_name\": \"string\",\n        \"pod_vessel_imo\": \"string\",\n        \"pod_voyage_number\": \"string\",\n        \"pol_atd_at\": \"1951-07-14T10:48:42.309Z\",\n        \"pod_eta_at\": \"1995-07-29T06:50:29.173Z\",\n        \"pod_ata_at\": \"1979-08-09T11:22:16.673Z\",\n        \"destination_eta_at\": \"1989-05-18T13:00:56.697Z\",\n        \"destination_ata_at\": \"1980-11-16T15:36:28.064Z\",\n        \"line_tracking_stopped_at\": \"1969-02-25T05:05:15.736Z\",\n        \"line_tracking_stopped_reason\": \"string\"\n      },\n      \"relationships\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"shipment\",\n      \"attributes\": {\n        \"bill_of_lading_number\": \"string\",\n        \"normalized_number\": \"string\",\n        \"ref_numbers\": [\n          \"string\",\n          \"string\"\n        ],\n        \"shipping_line_scac\": \"string\",\n        \"shipping_line_name\": \"string\",\n        \"shipping_line_short_name\": \"string\",\n        \"port_of_lading_locode\": \"string\",\n        \"port_of_lading_name\": \"string\",\n        \"port_of_discharge_locode\": \"string\",\n        \"port_of_discharge_name\": \"string\",\n        \"destination_locode\": \"string\",\n        \"destination_name\": \"string\",\n        \"pod_vessel_name\": \"string\",\n        \"pod_vessel_imo\": \"string\",\n        \"pod_voyage_number\": \"string\",\n        \"pol_atd_at\": \"2007-05-27T02:59:35.554Z\",\n        \"pod_eta_at\": \"1997-09-16T04:02:04.730Z\",\n        \"pod_ata_at\": \"2026-06-01T18:03:50.118Z\",\n        \"destination_eta_at\": \"2015-07-10T23:39:33.086Z\",\n        \"destination_ata_at\": \"2008-02-22T14:25:18.527Z\",\n        \"line_tracking_stopped_at\": \"1992-11-27T22:47:02.117Z\",\n        \"line_tracking_stopped_reason\": \"string\"\n      },\n      \"relationships\": {}\n    }\n  ],\n  \"links\": {\n    \"self\": \"string\",\n    \"first\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\",\n    \"last\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b200adc-bda4-465e-99fc-a54fb26aad48",
+          "name": "Retrieve a shipment",
+          "request": {
+            "name": "Retrieve a shipment",
+            "description": {},
+            "url": {
+              "path": [
+                "shipments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource identifier (UUID)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1fec080-4745-40b1-85d0-8979428446db",
+              "name": "The requested shipment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource identifier (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"type\": \"shipment\",\n    \"attributes\": {\n      \"bill_of_lading_number\": \"string\",\n      \"normalized_number\": \"string\",\n      \"ref_numbers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"shipping_line_scac\": \"string\",\n      \"shipping_line_name\": \"string\",\n      \"shipping_line_short_name\": \"string\",\n      \"port_of_lading_locode\": \"string\",\n      \"port_of_lading_name\": \"string\",\n      \"port_of_discharge_locode\": \"string\",\n      \"port_of_discharge_name\": \"string\",\n      \"destination_locode\": \"string\",\n      \"destination_name\": \"string\",\n      \"pod_vessel_name\": \"string\",\n      \"pod_vessel_imo\": \"string\",\n      \"pod_voyage_number\": \"string\",\n      \"pol_atd_at\": \"1959-07-14T12:33:20.448Z\",\n      \"pod_eta_at\": \"2004-10-12T02:11:44.261Z\",\n      \"pod_ata_at\": \"2024-04-07T10:48:59.599Z\",\n      \"destination_eta_at\": \"1947-10-24T02:25:17.293Z\",\n      \"destination_ata_at\": \"2020-03-01T12:51:55.833Z\",\n      \"line_tracking_stopped_at\": \"2026-05-27T10:20:54.327Z\",\n      \"line_tracking_stopped_reason\": \"string\"\n    },\n    \"relationships\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc3a598c-410a-4b8d-b571-79e42e17cf96",
+          "name": "Edit a shipment",
+          "request": {
+            "name": "Edit a shipment",
+            "description": {},
+            "url": {
+              "path": [
+                "shipments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource identifier (UUID)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.api+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"bill_of_lading_number\": \"<string>\",\n      \"normalized_number\": \"<string>\",\n      \"ref_numbers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"shipping_line_scac\": \"<string>\",\n      \"shipping_line_name\": \"<string>\",\n      \"shipping_line_short_name\": \"<string>\",\n      \"port_of_lading_locode\": \"<string>\",\n      \"port_of_lading_name\": \"<string>\",\n      \"port_of_discharge_locode\": \"<string>\",\n      \"port_of_discharge_name\": \"<string>\",\n      \"destination_locode\": \"<string>\",\n      \"destination_name\": \"<string>\",\n      \"pod_vessel_name\": \"<string>\",\n      \"pod_vessel_imo\": \"<string>\",\n      \"pod_voyage_number\": \"<string>\",\n      \"pol_atd_at\": \"<dateTime>\",\n      \"pod_eta_at\": \"<dateTime>\",\n      \"pod_ata_at\": \"<dateTime>\",\n      \"destination_eta_at\": \"<dateTime>\",\n      \"destination_ata_at\": \"<dateTime>\",\n      \"line_tracking_stopped_at\": \"<dateTime>\",\n      \"line_tracking_stopped_reason\": \"<string>\"\n    },\n    \"relationships\": \"<object>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "87264beb-745d-4a0e-8367-d9b81ce75b2d",
+              "name": "The updated shipment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource identifier (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"bill_of_lading_number\": \"<string>\",\n      \"normalized_number\": \"<string>\",\n      \"ref_numbers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"shipping_line_scac\": \"<string>\",\n      \"shipping_line_name\": \"<string>\",\n      \"shipping_line_short_name\": \"<string>\",\n      \"port_of_lading_locode\": \"<string>\",\n      \"port_of_lading_name\": \"<string>\",\n      \"port_of_discharge_locode\": \"<string>\",\n      \"port_of_discharge_name\": \"<string>\",\n      \"destination_locode\": \"<string>\",\n      \"destination_name\": \"<string>\",\n      \"pod_vessel_name\": \"<string>\",\n      \"pod_vessel_imo\": \"<string>\",\n      \"pod_voyage_number\": \"<string>\",\n      \"pol_atd_at\": \"<dateTime>\",\n      \"pod_eta_at\": \"<dateTime>\",\n      \"pod_ata_at\": \"<dateTime>\",\n      \"destination_eta_at\": \"<dateTime>\",\n      \"destination_ata_at\": \"<dateTime>\",\n      \"line_tracking_stopped_at\": \"<dateTime>\",\n      \"line_tracking_stopped_reason\": \"<string>\"\n    },\n    \"relationships\": \"<object>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"bill_of_lading_number\": \"<string>\",\n      \"normalized_number\": \"<string>\",\n      \"ref_numbers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"shipping_line_scac\": \"<string>\",\n      \"shipping_line_name\": \"<string>\",\n      \"shipping_line_short_name\": \"<string>\",\n      \"port_of_lading_locode\": \"<string>\",\n      \"port_of_lading_name\": \"<string>\",\n      \"port_of_discharge_locode\": \"<string>\",\n      \"port_of_discharge_name\": \"<string>\",\n      \"destination_locode\": \"<string>\",\n      \"destination_name\": \"<string>\",\n      \"pod_vessel_name\": \"<string>\",\n      \"pod_vessel_imo\": \"<string>\",\n      \"pod_voyage_number\": \"<string>\",\n      \"pol_atd_at\": \"<dateTime>\",\n      \"pod_eta_at\": \"<dateTime>\",\n      \"pod_ata_at\": \"<dateTime>\",\n      \"destination_eta_at\": \"<dateTime>\",\n      \"destination_ata_at\": \"<dateTime>\",\n      \"line_tracking_stopped_at\": \"<dateTime>\",\n      \"line_tracking_stopped_reason\": \"<string>\"\n    },\n    \"relationships\": \"<object>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c1cf70c-c750-4f04-8301-9c506d09c140",
+          "name": "Stop tracking a shipment",
+          "request": {
+            "name": "Stop tracking a shipment",
+            "description": {},
+            "url": {
+              "path": [
+                "shipments",
+                ":id",
+                "stop_tracking"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource identifier (UUID)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "837f124b-84d9-4db7-a727-0413ab3ea3ae",
+              "name": "Tracking stopped.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments",
+                    ":id",
+                    "stop_tracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource identifier (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"bill_of_lading_number\": \"<string>\",\n      \"normalized_number\": \"<string>\",\n      \"ref_numbers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"shipping_line_scac\": \"<string>\",\n      \"shipping_line_name\": \"<string>\",\n      \"shipping_line_short_name\": \"<string>\",\n      \"port_of_lading_locode\": \"<string>\",\n      \"port_of_lading_name\": \"<string>\",\n      \"port_of_discharge_locode\": \"<string>\",\n      \"port_of_discharge_name\": \"<string>\",\n      \"destination_locode\": \"<string>\",\n      \"destination_name\": \"<string>\",\n      \"pod_vessel_name\": \"<string>\",\n      \"pod_vessel_imo\": \"<string>\",\n      \"pod_voyage_number\": \"<string>\",\n      \"pol_atd_at\": \"<dateTime>\",\n      \"pod_eta_at\": \"<dateTime>\",\n      \"pod_ata_at\": \"<dateTime>\",\n      \"destination_eta_at\": \"<dateTime>\",\n      \"destination_ata_at\": \"<dateTime>\",\n      \"line_tracking_stopped_at\": \"<dateTime>\",\n      \"line_tracking_stopped_reason\": \"<string>\"\n    },\n    \"relationships\": \"<object>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "303d3d2d-db78-4a3d-98ff-f516903ebcb1",
+          "name": "Resume tracking a shipment",
+          "request": {
+            "name": "Resume tracking a shipment",
+            "description": {},
+            "url": {
+              "path": [
+                "shipments",
+                ":id",
+                "resume_tracking"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource identifier (UUID)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84c2b1c0-54cb-4706-907a-4a627b5f6147",
+              "name": "Tracking resumed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments",
+                    ":id",
+                    "resume_tracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource identifier (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"bill_of_lading_number\": \"<string>\",\n      \"normalized_number\": \"<string>\",\n      \"ref_numbers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"shipping_line_scac\": \"<string>\",\n      \"shipping_line_name\": \"<string>\",\n      \"shipping_line_short_name\": \"<string>\",\n      \"port_of_lading_locode\": \"<string>\",\n      \"port_of_lading_name\": \"<string>\",\n      \"port_of_discharge_locode\": \"<string>\",\n      \"port_of_discharge_name\": \"<string>\",\n      \"destination_locode\": \"<string>\",\n      \"destination_name\": \"<string>\",\n      \"pod_vessel_name\": \"<string>\",\n      \"pod_vessel_imo\": \"<string>\",\n      \"pod_voyage_number\": \"<string>\",\n      \"pol_atd_at\": \"<dateTime>\",\n      \"pod_eta_at\": \"<dateTime>\",\n      \"pod_ata_at\": \"<dateTime>\",\n      \"destination_eta_at\": \"<dateTime>\",\n      \"destination_ata_at\": \"<dateTime>\",\n      \"line_tracking_stopped_at\": \"<dateTime>\",\n      \"line_tracking_stopped_reason\": \"<string>\"\n    },\n    \"relationships\": \"<object>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.terminal49.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "69018239-0db5-4e0c-96fe-2843166dc28e",
+    "name": "Terminal49 Containers Shipments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Terminal49 v2 container and ocean-freight tracking API. A single integration to track Bills of Lading, bookings, and container numbers across global ocean carriers and North American rail, returning normalized milestones, ETAs, terminal availability, holds, demurrage fees, and last free day. The API follows the JSON:API specification; all requests and responses use the `application/vnd.api+json` media type and authenticate with a Token header.\n\nContact Support:\n Name: Terminal49 Support\n Email: support@terminal49.com",
+      "type": "text/plain"
+    }
+  }
+}

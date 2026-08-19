@@ -1,0 +1,452 @@
+{
+  "item": [
+    {
+      "id": "3120468a-8611-4f66-95f7-e4bebe73ddc8",
+      "name": "Tracking Requests",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a4a8f18b-696b-4e64-a097-e46fbd0d0173",
+          "name": "List tracking requests",
+          "request": {
+            "name": "List tracking requests",
+            "description": {},
+            "url": {
+              "path": [
+                "tracking_requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[number]",
+                  "value": "<integer>",
+                  "description": "Page number for JSON:API pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>",
+                  "description": "Number of records per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f290bcee-bec5-44c7-9e1a-4ee9131e5194",
+              "name": "A list of tracking requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking_requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[number]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"tracking_request\",\n      \"attributes\": {\n        \"request_number\": \"string\",\n        \"request_type\": \"container\",\n        \"scac\": \"string\",\n        \"ref_numbers\": [\n          \"string\",\n          \"string\"\n        ],\n        \"status\": \"pending\",\n        \"failed_reason\": \"string\",\n        \"created_at\": \"1993-01-13T07:51:32.153Z\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"tracking_request\",\n      \"attributes\": {\n        \"request_number\": \"string\",\n        \"request_type\": \"container\",\n        \"scac\": \"string\",\n        \"ref_numbers\": [\n          \"string\",\n          \"string\"\n        ],\n        \"status\": \"failed\",\n        \"failed_reason\": \"string\",\n        \"created_at\": \"1947-12-14T16:42:09.142Z\"\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"string\",\n    \"first\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\",\n    \"last\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "177fa833-2c0d-473f-9b63-5193fd885016",
+          "name": "Create a tracking request",
+          "request": {
+            "name": "Create a tracking request",
+            "description": {
+              "content": "Ask Terminal49 to begin tracking a shipment by submitting a Bill of Lading, booking, or container number together with the carrier SCAC.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tracking_requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.api+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"request_number\": \"<string>\",\n      \"request_type\": \"<string>\",\n      \"scac\": \"<string>\",\n      \"ref_numbers\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6e68660f-9e3e-444e-8c52-1c83e55db006",
+              "name": "The created tracking request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking_requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"request_number\": \"<string>\",\n      \"request_type\": \"<string>\",\n      \"scac\": \"<string>\",\n      \"ref_numbers\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"type\": \"tracking_request\",\n    \"attributes\": {\n      \"request_number\": \"string\",\n      \"request_type\": \"booking_number\",\n      \"scac\": \"string\",\n      \"ref_numbers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"status\": \"tracking_stopped\",\n      \"failed_reason\": \"string\",\n      \"created_at\": \"1962-08-27T18:41:28.994Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "44860603-56d2-429d-82c4-c75f140112d9",
+          "name": "Retrieve a tracking request",
+          "request": {
+            "name": "Retrieve a tracking request",
+            "description": {},
+            "url": {
+              "path": [
+                "tracking_requests",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource identifier (UUID)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5f9682c-9b11-4f65-8532-e700096ee395",
+              "name": "The requested tracking request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking_requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource identifier (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"type\": \"tracking_request\",\n    \"attributes\": {\n      \"request_number\": \"string\",\n      \"request_type\": \"booking_number\",\n      \"scac\": \"string\",\n      \"ref_numbers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"status\": \"tracking_stopped\",\n      \"failed_reason\": \"string\",\n      \"created_at\": \"1962-08-27T18:41:28.994Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41100d1a-d775-48ff-b263-27cf3336e570",
+          "name": "Edit a tracking request",
+          "request": {
+            "name": "Edit a tracking request",
+            "description": {},
+            "url": {
+              "path": [
+                "tracking_requests",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource identifier (UUID)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.api+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"request_number\": \"<string>\",\n      \"request_type\": \"<string>\",\n      \"scac\": \"<string>\",\n      \"ref_numbers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"status\": \"<string>\",\n      \"failed_reason\": \"<string>\",\n      \"created_at\": \"<dateTime>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5ac88d76-ad9e-4812-bde9-26053779a450",
+              "name": "The updated tracking request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking_requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource identifier (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"request_number\": \"<string>\",\n      \"request_type\": \"<string>\",\n      \"scac\": \"<string>\",\n      \"ref_numbers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"status\": \"<string>\",\n      \"failed_reason\": \"<string>\",\n      \"created_at\": \"<dateTime>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"request_number\": \"<string>\",\n      \"request_type\": \"<string>\",\n      \"scac\": \"<string>\",\n      \"ref_numbers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"status\": \"<string>\",\n      \"failed_reason\": \"<string>\",\n      \"created_at\": \"<dateTime>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.terminal49.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b0e0c8b9-d4a0-4c61-a9a4-d63e0e47424c",
+    "name": "Terminal49 Containers Tracking Requests API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Terminal49 v2 container and ocean-freight tracking API. A single integration to track Bills of Lading, bookings, and container numbers across global ocean carriers and North American rail, returning normalized milestones, ETAs, terminal availability, holds, demurrage fees, and last free day. The API follows the JSON:API specification; all requests and responses use the `application/vnd.api+json` media type and authenticate with a Token header.\n\nContact Support:\n Name: Terminal49 Support\n Email: support@terminal49.com",
+      "type": "text/plain"
+    }
+  }
+}

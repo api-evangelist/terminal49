@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Terminal49 Containers Transport Events API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transport Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List transport events for a container",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.terminal49.com/v2/containers/:id/transport_events",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource identifier (UUID)."
+              }
+            ]
+          },
+          "docs": "List transport events for a container"
+        },
+        {
+          "info": {
+            "name": "List raw events for a container (deprecated)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.terminal49.com/v2/containers/:id/raw_events",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource identifier (UUID)."
+              }
+            ]
+          },
+          "docs": "List raw events for a container (deprecated)"
+        },
+        {
+          "info": {
+            "name": "List transport events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.terminal49.com/v2/transport_events",
+            "params": [
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Page number for JSON:API pagination."
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page."
+              }
+            ]
+          },
+          "docs": "List transport events"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

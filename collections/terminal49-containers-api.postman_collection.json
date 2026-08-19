@@ -1,0 +1,523 @@
+{
+  "item": [
+    {
+      "id": "7447e6cf-6de6-4bcb-ae17-25b9d3dade59",
+      "name": "Containers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "90c7b008-301b-4f10-95ae-f4e9369dbadd",
+          "name": "List containers",
+          "request": {
+            "name": "List containers",
+            "description": {},
+            "url": {
+              "path": [
+                "containers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[number]",
+                  "value": "<integer>",
+                  "description": "Page number for JSON:API pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>",
+                  "description": "Number of records per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b3b390d-040a-4be4-b929-49283f96f124",
+              "name": "A list of containers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "containers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[number]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"container\",\n      \"attributes\": {\n        \"number\": \"string\",\n        \"seal_number\": \"string\",\n        \"ref_numbers\": [\n          \"string\",\n          \"string\"\n        ],\n        \"equipment_type\": \"string\",\n        \"equipment_length\": 4294,\n        \"equipment_height\": \"standard\",\n        \"weight_in_lbs\": 5340,\n        \"current_status\": \"string\",\n        \"availability_known\": false,\n        \"available_for_pickup\": true,\n        \"pickup_lfd\": \"1998-11-04T07:55:58.206Z\",\n        \"pickup_appointment_at\": \"2005-12-09T15:00:13.348Z\",\n        \"pod_arrived_at\": \"1973-03-16T07:57:50.171Z\",\n        \"pod_discharged_at\": \"2011-05-12T19:50:58.198Z\",\n        \"pod_full_out_at\": \"1961-02-11T19:27:51.825Z\",\n        \"location_at_pod_terminal\": \"string\",\n        \"ind_eta_at\": \"1987-07-10T01:24:12.284Z\",\n        \"ind_ata_at\": \"1994-03-09T01:41:10.408Z\",\n        \"ind_rail_unloaded_at\": \"1956-05-27T10:42:20.810Z\",\n        \"pod_rail_carrier_scac\": \"string\",\n        \"ind_rail_carrier_scac\": \"string\",\n        \"holds_at_pod_terminal\": [\n          {\n            \"name\": \"string\",\n            \"status\": \"string\",\n            \"description\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"status\": \"string\",\n            \"description\": \"string\"\n          }\n        ],\n        \"fees_at_pod_terminal\": [\n          {\n            \"type\": \"string\",\n            \"amount\": 7517.861511875834,\n            \"currency\": \"string\"\n          },\n          {\n            \"type\": \"string\",\n            \"amount\": 4041.6189064255736,\n            \"currency\": \"string\"\n          }\n        ],\n        \"terminal_checked_at\": \"1996-12-16T08:40:11.247Z\"\n      },\n      \"relationships\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"container\",\n      \"attributes\": {\n        \"number\": \"string\",\n        \"seal_number\": \"string\",\n        \"ref_numbers\": [\n          \"string\",\n          \"string\"\n        ],\n        \"equipment_type\": \"string\",\n        \"equipment_length\": 9094,\n        \"equipment_height\": \"high_cube\",\n        \"weight_in_lbs\": 2679,\n        \"current_status\": \"string\",\n        \"availability_known\": false,\n        \"available_for_pickup\": true,\n        \"pickup_lfd\": \"1984-03-19T00:56:17.571Z\",\n        \"pickup_appointment_at\": \"2017-12-28T17:43:17.756Z\",\n        \"pod_arrived_at\": \"2014-08-15T03:39:00.548Z\",\n        \"pod_discharged_at\": \"1951-03-31T15:19:33.392Z\",\n        \"pod_full_out_at\": \"2015-02-01T03:28:03.720Z\",\n        \"location_at_pod_terminal\": \"string\",\n        \"ind_eta_at\": \"1993-08-14T00:11:24.373Z\",\n        \"ind_ata_at\": \"1980-04-05T01:33:18.728Z\",\n        \"ind_rail_unloaded_at\": \"1984-11-25T16:47:57.092Z\",\n        \"pod_rail_carrier_scac\": \"string\",\n        \"ind_rail_carrier_scac\": \"string\",\n        \"holds_at_pod_terminal\": [\n          {\n            \"name\": \"string\",\n            \"status\": \"string\",\n            \"description\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"status\": \"string\",\n            \"description\": \"string\"\n          }\n        ],\n        \"fees_at_pod_terminal\": [\n          {\n            \"type\": \"string\",\n            \"amount\": 5005.10398192145,\n            \"currency\": \"string\"\n          },\n          {\n            \"type\": \"string\",\n            \"amount\": 2311.246904367749,\n            \"currency\": \"string\"\n          }\n        ],\n        \"terminal_checked_at\": \"1974-04-10T23:54:50.662Z\"\n      },\n      \"relationships\": {}\n    }\n  ],\n  \"links\": {\n    \"self\": \"string\",\n    \"first\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\",\n    \"last\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1f918e6-b4a2-499b-b379-70d8a85bda51",
+          "name": "Retrieve a container",
+          "request": {
+            "name": "Retrieve a container",
+            "description": {},
+            "url": {
+              "path": [
+                "containers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource identifier (UUID)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dbc1db2f-194f-4751-b60c-65ceea30add7",
+              "name": "The requested container.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "containers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource identifier (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"type\": \"container\",\n    \"attributes\": {\n      \"number\": \"string\",\n      \"seal_number\": \"string\",\n      \"ref_numbers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"equipment_type\": \"string\",\n      \"equipment_length\": 6136,\n      \"equipment_height\": \"high_cube\",\n      \"weight_in_lbs\": 8650,\n      \"current_status\": \"string\",\n      \"availability_known\": false,\n      \"available_for_pickup\": true,\n      \"pickup_lfd\": \"2023-06-17T23:12:48.997Z\",\n      \"pickup_appointment_at\": \"1968-07-06T10:35:13.047Z\",\n      \"pod_arrived_at\": \"1952-07-04T16:45:26.449Z\",\n      \"pod_discharged_at\": \"1989-11-13T20:12:48.140Z\",\n      \"pod_full_out_at\": \"2000-10-02T03:24:05.790Z\",\n      \"location_at_pod_terminal\": \"string\",\n      \"ind_eta_at\": \"1957-11-27T02:35:17.150Z\",\n      \"ind_ata_at\": \"1953-09-25T21:38:08.386Z\",\n      \"ind_rail_unloaded_at\": \"2004-11-03T08:13:24.809Z\",\n      \"pod_rail_carrier_scac\": \"string\",\n      \"ind_rail_carrier_scac\": \"string\",\n      \"holds_at_pod_terminal\": [\n        {\n          \"name\": \"string\",\n          \"status\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"status\": \"string\",\n          \"description\": \"string\"\n        }\n      ],\n      \"fees_at_pod_terminal\": [\n        {\n          \"type\": \"string\",\n          \"amount\": 614.8366816441996,\n          \"currency\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"amount\": 6511.3745139541,\n          \"currency\": \"string\"\n        }\n      ],\n      \"terminal_checked_at\": \"2026-03-08T07:48:16.298Z\"\n    },\n    \"relationships\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e88b532b-d0e5-42e7-afeb-1cfb2a6badec",
+          "name": "Edit a container",
+          "request": {
+            "name": "Edit a container",
+            "description": {},
+            "url": {
+              "path": [
+                "containers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource identifier (UUID)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.api+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"number\": \"<string>\",\n      \"seal_number\": \"<string>\",\n      \"ref_numbers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"equipment_type\": \"<string>\",\n      \"equipment_length\": \"<integer>\",\n      \"equipment_height\": \"<string>\",\n      \"weight_in_lbs\": \"<integer>\",\n      \"current_status\": \"<string>\",\n      \"availability_known\": \"<boolean>\",\n      \"available_for_pickup\": \"<boolean>\",\n      \"pickup_lfd\": \"<dateTime>\",\n      \"pickup_appointment_at\": \"<dateTime>\",\n      \"pod_arrived_at\": \"<dateTime>\",\n      \"pod_discharged_at\": \"<dateTime>\",\n      \"pod_full_out_at\": \"<dateTime>\",\n      \"location_at_pod_terminal\": \"<string>\",\n      \"ind_eta_at\": \"<dateTime>\",\n      \"ind_ata_at\": \"<dateTime>\",\n      \"ind_rail_unloaded_at\": \"<dateTime>\",\n      \"pod_rail_carrier_scac\": \"<string>\",\n      \"ind_rail_carrier_scac\": \"<string>\",\n      \"holds_at_pod_terminal\": [\n        {\n          \"name\": \"<string>\",\n          \"status\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"status\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"fees_at_pod_terminal\": [\n        {\n          \"type\": \"<string>\",\n          \"amount\": \"<number>\",\n          \"currency\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"amount\": \"<number>\",\n          \"currency\": \"<string>\"\n        }\n      ],\n      \"terminal_checked_at\": \"<dateTime>\"\n    },\n    \"relationships\": \"<object>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ef874dda-9c0f-48e5-936d-40aaae5f8588",
+              "name": "The updated container.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "containers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource identifier (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"number\": \"<string>\",\n      \"seal_number\": \"<string>\",\n      \"ref_numbers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"equipment_type\": \"<string>\",\n      \"equipment_length\": \"<integer>\",\n      \"equipment_height\": \"<string>\",\n      \"weight_in_lbs\": \"<integer>\",\n      \"current_status\": \"<string>\",\n      \"availability_known\": \"<boolean>\",\n      \"available_for_pickup\": \"<boolean>\",\n      \"pickup_lfd\": \"<dateTime>\",\n      \"pickup_appointment_at\": \"<dateTime>\",\n      \"pod_arrived_at\": \"<dateTime>\",\n      \"pod_discharged_at\": \"<dateTime>\",\n      \"pod_full_out_at\": \"<dateTime>\",\n      \"location_at_pod_terminal\": \"<string>\",\n      \"ind_eta_at\": \"<dateTime>\",\n      \"ind_ata_at\": \"<dateTime>\",\n      \"ind_rail_unloaded_at\": \"<dateTime>\",\n      \"pod_rail_carrier_scac\": \"<string>\",\n      \"ind_rail_carrier_scac\": \"<string>\",\n      \"holds_at_pod_terminal\": [\n        {\n          \"name\": \"<string>\",\n          \"status\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"status\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"fees_at_pod_terminal\": [\n        {\n          \"type\": \"<string>\",\n          \"amount\": \"<number>\",\n          \"currency\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"amount\": \"<number>\",\n          \"currency\": \"<string>\"\n        }\n      ],\n      \"terminal_checked_at\": \"<dateTime>\"\n    },\n    \"relationships\": \"<object>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"number\": \"<string>\",\n      \"seal_number\": \"<string>\",\n      \"ref_numbers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"equipment_type\": \"<string>\",\n      \"equipment_length\": \"<integer>\",\n      \"equipment_height\": \"<string>\",\n      \"weight_in_lbs\": \"<integer>\",\n      \"current_status\": \"<string>\",\n      \"availability_known\": \"<boolean>\",\n      \"available_for_pickup\": \"<boolean>\",\n      \"pickup_lfd\": \"<dateTime>\",\n      \"pickup_appointment_at\": \"<dateTime>\",\n      \"pod_arrived_at\": \"<dateTime>\",\n      \"pod_discharged_at\": \"<dateTime>\",\n      \"pod_full_out_at\": \"<dateTime>\",\n      \"location_at_pod_terminal\": \"<string>\",\n      \"ind_eta_at\": \"<dateTime>\",\n      \"ind_ata_at\": \"<dateTime>\",\n      \"ind_rail_unloaded_at\": \"<dateTime>\",\n      \"pod_rail_carrier_scac\": \"<string>\",\n      \"ind_rail_carrier_scac\": \"<string>\",\n      \"holds_at_pod_terminal\": [\n        {\n          \"name\": \"<string>\",\n          \"status\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"status\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"fees_at_pod_terminal\": [\n        {\n          \"type\": \"<string>\",\n          \"amount\": \"<number>\",\n          \"currency\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"amount\": \"<number>\",\n          \"currency\": \"<string>\"\n        }\n      ],\n      \"terminal_checked_at\": \"<dateTime>\"\n    },\n    \"relationships\": \"<object>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "666e2d40-4416-4749-820e-93fdd19adfd9",
+          "name": "Force a container data refresh",
+          "request": {
+            "name": "Force a container data refresh",
+            "description": {},
+            "url": {
+              "path": [
+                "containers",
+                ":id",
+                "refresh"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource identifier (UUID)."
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "968dc713-2536-4855-8bfa-1fe3a057447c",
+              "name": "Refresh accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "containers",
+                    ":id",
+                    "refresh"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource identifier (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fca9f523-f270-45a5-a1d4-7bf903ae8862",
+          "name": "Retrieve GeoJSON map data for a container",
+          "request": {
+            "name": "Retrieve GeoJSON map data for a container",
+            "description": {},
+            "url": {
+              "path": [
+                "containers",
+                ":id",
+                "map"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource identifier (UUID)."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "97af44f5-bac9-4468-bc1e-f93f7d6be224",
+              "name": "GeoJSON map data for the container journey.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "containers",
+                    ":id",
+                    "map"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource identifier (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.terminal49.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4976d99b-715b-4382-bf23-81572bf1e84d",
+    "name": "Terminal49 Containers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Terminal49 v2 container and ocean-freight tracking API. A single integration to track Bills of Lading, bookings, and container numbers across global ocean carriers and North American rail, returning normalized milestones, ETAs, terminal availability, holds, demurrage fees, and last free day. The API follows the JSON:API specification; all requests and responses use the `application/vnd.api+json` media type and authenticate with a Token header.\n\nContact Support:\n Name: Terminal49 Support\n Email: support@terminal49.com",
+      "type": "text/plain"
+    }
+  }
+}

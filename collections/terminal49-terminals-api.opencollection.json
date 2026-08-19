@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Terminal49 Containers Terminals API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Terminals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a terminal",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.terminal49.com/v2/terminals/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource identifier (UUID)."
+              }
+            ]
+          },
+          "docs": "Retrieve a terminal"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

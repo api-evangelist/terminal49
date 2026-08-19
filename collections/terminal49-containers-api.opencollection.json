@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Terminal49 Containers API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Containers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List containers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.terminal49.com/v2/containers",
+            "params": [
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Page number for JSON:API pagination."
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page."
+              }
+            ]
+          },
+          "docs": "List containers"
+        },
+        {
+          "info": {
+            "name": "Retrieve a container",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.terminal49.com/v2/containers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource identifier (UUID)."
+              }
+            ]
+          },
+          "docs": "Retrieve a container"
+        },
+        {
+          "info": {
+            "name": "Edit a container",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.terminal49.com/v2/containers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource identifier (UUID)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit a container"
+        },
+        {
+          "info": {
+            "name": "Force a container data refresh",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.terminal49.com/v2/containers/:id/refresh",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource identifier (UUID)."
+              }
+            ]
+          },
+          "docs": "Force a container data refresh"
+        },
+        {
+          "info": {
+            "name": "Retrieve GeoJSON map data for a container",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.terminal49.com/v2/containers/:id/map",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource identifier (UUID)."
+              }
+            ]
+          },
+          "docs": "Retrieve GeoJSON map data for a container"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

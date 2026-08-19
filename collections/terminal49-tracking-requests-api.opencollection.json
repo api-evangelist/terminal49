@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Terminal49 Containers Tracking Requests API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tracking Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List tracking requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.terminal49.com/v2/tracking_requests",
+            "params": [
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Page number for JSON:API pagination."
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page."
+              }
+            ]
+          },
+          "docs": "List tracking requests"
+        },
+        {
+          "info": {
+            "name": "Create a tracking request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.terminal49.com/v2/tracking_requests",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ask Terminal49 to begin tracking a shipment by submitting a Bill of Lading, booking, or container number together with the carrier SCAC."
+        },
+        {
+          "info": {
+            "name": "Retrieve a tracking request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.terminal49.com/v2/tracking_requests/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource identifier (UUID)."
+              }
+            ]
+          },
+          "docs": "Retrieve a tracking request"
+        },
+        {
+          "info": {
+            "name": "Edit a tracking request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.terminal49.com/v2/tracking_requests/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource identifier (UUID)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit a tracking request"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
