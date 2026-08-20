@@ -169,6 +169,8 @@ apis:
   humanURL: https://terminal49.com/docs/api-docs/api-reference/introduction
   baseURL: https://api.terminal49.com/v2
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
