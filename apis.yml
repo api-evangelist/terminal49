@@ -7,6 +7,18 @@ description: Terminal49 is an automated container and ocean-freight tracking pla
   Bills of Lading, bookings, and container numbers across global ocean carriers and
   North American rail, returning normalized milestones, ETAs, terminal availability,
   holds, demurrage fees, and last free day, with webhooks for real-time updates.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
