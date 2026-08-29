@@ -1,0 +1,56 @@
+slug: terminal49
+provider: Terminal49
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Shipments
+  spec_file: terminal49-shipments-api-openapi.yml
+  capability_id: BC-2510.20
+  capability_id_l1: BC-2510
+  capability_name: Shipment Tracking Management
+  confidence: 0.9
+  evidence: '"Stop tracking a shipment", "Resume tracking a shipment", "List shipments"'
+  reason: Operations manage tracked shipments and the tracking lifecycle across carriers and legs, which
+    is squarely shipment tracking management within visibility.
+- tag: Containers
+  spec_file: terminal49-containers-api-openapi.yml
+  capability_id: BC-2510.20
+  capability_id_l1: BC-2510
+  capability_name: Shipment Tracking Management
+  confidence: 0.85
+  evidence: '"Force a container data refresh", "Retrieve GeoJSON map data for a container"; vendor: "track
+    Bills of Lading, bookings, and container numbers ... returning normalized milestones, ETAs, terminal
+    availability, holds, demurrage fees, and last free day"'
+  reason: Container resources here are tracked ocean/rail shipment units whose status, position and milestones
+    are resolved and refreshed for customers — shipment visibility and tracking, not equipment pool or
+    fleet management.
+- tag: Transport Events
+  spec_file: terminal49-transport-events-api-openapi.yml
+  capability_id: BC-2510.10
+  capability_id_l1: BC-2510
+  capability_name: Event Capture and Status Management
+  confidence: 0.85
+  evidence: '"List transport events for a container", "List raw events for a container (deprecated)",
+    schema "TransportEventAttributes"'
+  reason: Surface delivers captured carrier/terminal events, both raw and normalized ('normalized milestones'),
+    which is event capture and status management feeding visibility.
+- tag: Tracking Requests
+  spec_file: terminal49-tracking-requests-api-openapi.yml
+  capability_id: BC-2510.20
+  capability_id_l1: BC-2510
+  capability_name: Shipment Tracking Management
+  confidence: 0.8
+  evidence: '"Create a tracking request"; vendor: "track Bills of Lading, bookings, and container numbers
+    across global ocean carriers"'
+  reason: Tracking requests are the enrolment mechanism by which a BOL/booking/container is put under
+    tracking, i.e. the intake side of shipment tracking management rather than a booking of capacity.

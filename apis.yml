@@ -200,6 +200,9 @@ apis:
   - type: Documentation
     url: https://terminal49.com/docs/api-docs/in-depth-guides/quickstart/
 common:
+- type: CapabilityMap
+  url: capabilities/terminal49-capability-edges.yml
+  name: Terminal49 Business Capability Map
 - type: AgenticAccess
   url: agentic-access/terminal49-agentic-access.yml
 - type: DomainSecurity
