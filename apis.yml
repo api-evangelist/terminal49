@@ -116,6 +116,8 @@ apis:
   humanURL: https://terminal49.com/docs/api-docs/api-reference/introduction
   baseURL: https://api.terminal49.com/v2
   tags:
+  - Terminal
+  tags_raw:
   - Terminals
   properties:
   - type: OpenAPI
