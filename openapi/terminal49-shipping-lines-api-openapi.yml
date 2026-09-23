@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Terminal49 Containers Shipping Lines API
+  title: Terminal49 Shipping Lines API
   description: Terminal49 v2 container and ocean-freight tracking API. A single integration to track Bills of Lading, bookings, and container numbers across global ocean carriers and North American rail, returning normalized milestones, ETAs, terminal availability, holds, demurrage fees, and last free day. The API follows the JSON:API specification; all requests and responses use the `application/vnd.api+json` media type and authenticate with a Token header.
   termsOfService: https://www.terminal49.com/terms-of-service/
   contact:
@@ -46,33 +46,6 @@ paths:
                 $ref: '#/components/schemas/ShippingLineSingle'
 components:
   schemas:
-    ShippingLineSingle:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ShippingLineResource'
-    ShippingLineList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ShippingLineResource'
-        links:
-          $ref: '#/components/schemas/JsonApiLinks'
-    JsonApiLinks:
-      type: object
-      properties:
-        self:
-          type: string
-        first:
-          type: string
-        prev:
-          type: string
-        next:
-          type: string
-        last:
-          type: string
     ShippingLineResource:
       type: object
       properties:
@@ -97,6 +70,33 @@ components:
           type: array
           items:
             type: string
+    ShippingLineList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShippingLineResource'
+        links:
+          $ref: '#/components/schemas/JsonApiLinks'
+    ShippingLineSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ShippingLineResource'
+    JsonApiLinks:
+      type: object
+      properties:
+        self:
+          type: string
+        first:
+          type: string
+        prev:
+          type: string
+        next:
+          type: string
+        last:
+          type: string
   parameters:
     ResourceId:
       name: id

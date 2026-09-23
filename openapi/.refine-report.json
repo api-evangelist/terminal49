@@ -1,13 +1,7 @@
 {
   "provider": "terminal49",
   "sources": [
-    "terminal49-containers-api-openapi.yml",
-    "terminal49-shipments-api-openapi.yml",
-    "terminal49-shipping-lines-api-openapi.yml",
-    "terminal49-terminals-api-openapi.yml",
-    "terminal49-tracking-requests-api-openapi.yml",
-    "terminal49-transport-events-api-openapi.yml",
-    "terminal49-webhooks-api-openapi.yml"
+    "_original/terminal49-openapi.yml"
   ],
   "outputs": [
     "terminal49-containers-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "terminal49-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "terminal49-containers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "terminal49-shipments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "terminal49-shipping-lines-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "terminal49-terminals-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "terminal49-tracking-requests-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "terminal49-transport-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "terminal49-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

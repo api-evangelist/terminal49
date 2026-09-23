@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Terminal49 Containers Transport Events API
+  title: Terminal49 Transport Events API
   description: Terminal49 v2 container and ocean-freight tracking API. A single integration to track Bills of Lading, bookings, and container numbers across global ocean carriers and North American rail, returning normalized milestones, ETAs, terminal availability, holds, demurrage fees, and last free day. The API follows the JSON:API specification; all requests and responses use the `application/vnd.api+json` media type and authenticate with a Token header.
   termsOfService: https://www.terminal49.com/terms-of-service/
   contact:
@@ -61,13 +61,6 @@ paths:
                 $ref: '#/components/schemas/TransportEventList'
 components:
   parameters:
-    PageNumber:
-      name: page[number]
-      in: query
-      required: false
-      description: Page number for JSON:API pagination.
-      schema:
-        type: integer
     PageSize:
       name: page[size]
       in: query
@@ -82,16 +75,14 @@ components:
       description: The resource identifier (UUID).
       schema:
         type: string
+    PageNumber:
+      name: page[number]
+      in: query
+      required: false
+      description: Page number for JSON:API pagination.
+      schema:
+        type: integer
   schemas:
-    TransportEventList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransportEventResource'
-        links:
-          $ref: '#/components/schemas/JsonApiLinks'
     TransportEventResource:
       type: object
       properties:
@@ -103,19 +94,15 @@ components:
           - transport_event
         attributes:
           $ref: '#/components/schemas/TransportEventAttributes'
-    JsonApiLinks:
+    TransportEventList:
       type: object
       properties:
-        self:
-          type: string
-        first:
-          type: string
-        prev:
-          type: string
-        next:
-          type: string
-        last:
-          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransportEventResource'
+        links:
+          $ref: '#/components/schemas/JsonApiLinks'
     TransportEventAttributes:
       type: object
       properties:
@@ -129,20 +116,38 @@ components:
           type: string
           format: date-time
         location_locode:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         timezone:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         voyage_number:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         vessel_name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         vessel_imo:
+          type:
+          - string
+          - 'null'
+    JsonApiLinks:
+      type: object
+      properties:
+        self:
           type: string
-          nullable: true
+        first:
+          type: string
+        prev:
+          type: string
+        next:
+          type: string
+        last:
+          type: string
   securitySchemes:
     TokenAuth:
       type: apiKey

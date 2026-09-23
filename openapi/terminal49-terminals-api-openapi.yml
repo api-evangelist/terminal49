@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Terminal49 Containers Terminals API
+  title: Terminal49 Terminals API
   description: Terminal49 v2 container and ocean-freight tracking API. A single integration to track Bills of Lading, bookings, and container numbers across global ocean carriers and North American rail, returning normalized milestones, ETAs, terminal availability, holds, demurrage fees, and last free day. The API follows the JSON:API specification; all requests and responses use the `application/vnd.api+json` media type and authenticate with a Token header.
   termsOfService: https://www.terminal49.com/terms-of-service/
   contact:
@@ -32,7 +32,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/TerminalSingle'
 components:
+  parameters:
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier (UUID).
+      schema:
+        type: string
   schemas:
+    TerminalAttributes:
+      type: object
+      properties:
+        nickname:
+          type: string
+        name:
+          type: string
+        firms_code:
+          type:
+          - string
+          - 'null'
+        smdg_code:
+          type:
+          - string
+          - 'null'
+        port_locode:
+          type: string
     TerminalSingle:
       type: object
       properties:
@@ -49,29 +74,6 @@ components:
           - terminal
         attributes:
           $ref: '#/components/schemas/TerminalAttributes'
-    TerminalAttributes:
-      type: object
-      properties:
-        nickname:
-          type: string
-        name:
-          type: string
-        firms_code:
-          type: string
-          nullable: true
-        smdg_code:
-          type: string
-          nullable: true
-        port_locode:
-          type: string
-  parameters:
-    ResourceId:
-      name: id
-      in: path
-      required: true
-      description: The resource identifier (UUID).
-      schema:
-        type: string
   securitySchemes:
     TokenAuth:
       type: apiKey

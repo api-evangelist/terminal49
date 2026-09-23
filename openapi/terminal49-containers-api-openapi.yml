@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Terminal49 Containers API
   description: Terminal49 v2 container and ocean-freight tracking API. A single integration to track Bills of Lading, bookings, and container numbers across global ocean carriers and North American rail, returning normalized milestones, ETAs, terminal availability, holds, demurrage fees, and last free day. The API follows the JSON:API specification; all requests and responses use the `application/vnd.api+json` media type and authenticate with a Token header.
@@ -90,42 +90,29 @@ paths:
         '200':
           description: GeoJSON map data for the container journey.
 components:
-  parameters:
-    PageNumber:
-      name: page[number]
-      in: query
-      required: false
-      description: Page number for JSON:API pagination.
-      schema:
-        type: integer
-    PageSize:
-      name: page[size]
-      in: query
-      required: false
-      description: Number of records per page.
-      schema:
-        type: integer
-    ResourceId:
-      name: id
-      in: path
-      required: true
-      description: The resource identifier (UUID).
-      schema:
-        type: string
   schemas:
-    ContainerSingle:
+    ContainerResource:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/ContainerResource'
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - container
+        attributes:
+          $ref: '#/components/schemas/ContainerAttributes'
+        relationships:
+          type: object
     ContainerAttributes:
       type: object
       properties:
         number:
           type: string
         seal_number:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         ref_numbers:
           type: array
           items:
@@ -142,58 +129,71 @@ components:
           - standard
           - high_cube
         weight_in_lbs:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         current_status:
           type: string
           description: e.g. new, on_ship, available, delivered.
         availability_known:
           type: boolean
         available_for_pickup:
-          type: boolean
-          nullable: true
+          type:
+          - boolean
+          - 'null'
         pickup_lfd:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
           description: Last free day, coalesced from import deadlines.
         pickup_appointment_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         pod_arrived_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         pod_discharged_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         pod_full_out_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         location_at_pod_terminal:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         ind_eta_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         ind_ata_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         ind_rail_unloaded_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         pod_rail_carrier_scac:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         ind_rail_carrier_scac:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         holds_at_pod_terminal:
           type: array
           items:
@@ -218,9 +218,15 @@ components:
               currency:
                 type: string
         terminal_checked_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
+    ContainerSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ContainerResource'
     ContainerList:
       type: object
       properties:
@@ -230,19 +236,6 @@ components:
             $ref: '#/components/schemas/ContainerResource'
         links:
           $ref: '#/components/schemas/JsonApiLinks'
-    ContainerResource:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-          enum:
-          - container
-        attributes:
-          $ref: '#/components/schemas/ContainerAttributes'
-        relationships:
-          type: object
     JsonApiLinks:
       type: object
       properties:
@@ -256,6 +249,28 @@ components:
           type: string
         last:
           type: string
+  parameters:
+    PageSize:
+      name: page[size]
+      in: query
+      required: false
+      description: Number of records per page.
+      schema:
+        type: integer
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier (UUID).
+      schema:
+        type: string
+    PageNumber:
+      name: page[number]
+      in: query
+      required: false
+      description: Page number for JSON:API pagination.
+      schema:
+        type: integer
   securitySchemes:
     TokenAuth:
       type: apiKey
