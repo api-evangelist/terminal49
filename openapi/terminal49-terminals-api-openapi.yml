@@ -41,6 +41,17 @@ components:
       schema:
         type: string
   schemas:
+    TerminalResource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - terminal
+        attributes:
+          $ref: '#/components/schemas/TerminalAttributes'
     TerminalAttributes:
       type: object
       properties:
@@ -63,17 +74,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/TerminalResource'
-    TerminalResource:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-          enum:
-          - terminal
-        attributes:
-          $ref: '#/components/schemas/TerminalAttributes'
   securitySchemes:
     TokenAuth:
       type: apiKey

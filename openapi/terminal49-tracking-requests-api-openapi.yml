@@ -88,11 +88,37 @@ paths:
                 $ref: '#/components/schemas/TrackingRequestSingle'
 components:
   schemas:
-    TrackingRequestSingle:
+    TrackingRequestCreate:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/TrackingRequestResource'
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - tracking_request
+            attributes:
+              type: object
+              required:
+              - request_number
+              - request_type
+              - scac
+              properties:
+                request_number:
+                  type: string
+                request_type:
+                  type: string
+                  enum:
+                  - bill_of_lading
+                  - booking_number
+                  - container
+                scac:
+                  type: string
+                ref_numbers:
+                  type: array
+                  items:
+                    type: string
     JsonApiLinks:
       type: object
       properties:
@@ -106,6 +132,31 @@ components:
           type: string
         last:
           type: string
+    TrackingRequestResource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - tracking_request
+        attributes:
+          $ref: '#/components/schemas/TrackingRequestAttributes'
+    TrackingRequestSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/TrackingRequestResource'
+    TrackingRequestList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrackingRequestResource'
+        links:
+          $ref: '#/components/schemas/JsonApiLinks'
     TrackingRequestAttributes:
       type: object
       properties:
@@ -139,65 +190,7 @@ components:
         created_at:
           type: string
           format: date-time
-    TrackingRequestCreate:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            type:
-              type: string
-              enum:
-              - tracking_request
-            attributes:
-              type: object
-              required:
-              - request_number
-              - request_type
-              - scac
-              properties:
-                request_number:
-                  type: string
-                request_type:
-                  type: string
-                  enum:
-                  - bill_of_lading
-                  - booking_number
-                  - container
-                scac:
-                  type: string
-                ref_numbers:
-                  type: array
-                  items:
-                    type: string
-    TrackingRequestList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/TrackingRequestResource'
-        links:
-          $ref: '#/components/schemas/JsonApiLinks'
-    TrackingRequestResource:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-          enum:
-          - tracking_request
-        attributes:
-          $ref: '#/components/schemas/TrackingRequestAttributes'
   parameters:
-    PageSize:
-      name: page[size]
-      in: query
-      required: false
-      description: Number of records per page.
-      schema:
-        type: integer
     ResourceId:
       name: id
       in: path
@@ -210,6 +203,13 @@ components:
       in: query
       required: false
       description: Page number for JSON:API pagination.
+      schema:
+        type: integer
+    PageSize:
+      name: page[size]
+      in: query
+      required: false
+      description: Number of records per page.
       schema:
         type: integer
   securitySchemes:

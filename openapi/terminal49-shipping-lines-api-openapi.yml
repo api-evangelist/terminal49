@@ -46,44 +46,6 @@ paths:
                 $ref: '#/components/schemas/ShippingLineSingle'
 components:
   schemas:
-    ShippingLineResource:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-          enum:
-          - shipping_line
-        attributes:
-          $ref: '#/components/schemas/ShippingLineAttributes'
-    ShippingLineAttributes:
-      type: object
-      properties:
-        scac:
-          type: string
-        name:
-          type: string
-        short_name:
-          type: string
-        bill_of_lading_prefixes:
-          type: array
-          items:
-            type: string
-    ShippingLineList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ShippingLineResource'
-        links:
-          $ref: '#/components/schemas/JsonApiLinks'
-    ShippingLineSingle:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ShippingLineResource'
     JsonApiLinks:
       type: object
       properties:
@@ -97,6 +59,44 @@ components:
           type: string
         last:
           type: string
+    ShippingLineList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShippingLineResource'
+        links:
+          $ref: '#/components/schemas/JsonApiLinks'
+    ShippingLineAttributes:
+      type: object
+      properties:
+        scac:
+          type: string
+        name:
+          type: string
+        short_name:
+          type: string
+        bill_of_lading_prefixes:
+          type: array
+          items:
+            type: string
+    ShippingLineResource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - shipping_line
+        attributes:
+          $ref: '#/components/schemas/ShippingLineAttributes'
+    ShippingLineSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ShippingLineResource'
   parameters:
     ResourceId:
       name: id

@@ -60,40 +60,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/TransportEventList'
 components:
-  parameters:
-    PageSize:
-      name: page[size]
-      in: query
-      required: false
-      description: Number of records per page.
-      schema:
-        type: integer
-    ResourceId:
-      name: id
-      in: path
-      required: true
-      description: The resource identifier (UUID).
-      schema:
-        type: string
-    PageNumber:
-      name: page[number]
-      in: query
-      required: false
-      description: Page number for JSON:API pagination.
-      schema:
-        type: integer
   schemas:
-    TransportEventResource:
+    JsonApiLinks:
       type: object
       properties:
-        id:
+        self:
           type: string
-        type:
+        first:
           type: string
-          enum:
-          - transport_event
-        attributes:
-          $ref: '#/components/schemas/TransportEventAttributes'
+        prev:
+          type: string
+        next:
+          type: string
+        last:
+          type: string
     TransportEventList:
       type: object
       properties:
@@ -135,19 +115,39 @@ components:
           type:
           - string
           - 'null'
-    JsonApiLinks:
+    TransportEventResource:
       type: object
       properties:
-        self:
+        id:
           type: string
-        first:
+        type:
           type: string
-        prev:
-          type: string
-        next:
-          type: string
-        last:
-          type: string
+          enum:
+          - transport_event
+        attributes:
+          $ref: '#/components/schemas/TransportEventAttributes'
+  parameters:
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier (UUID).
+      schema:
+        type: string
+    PageNumber:
+      name: page[number]
+      in: query
+      required: false
+      description: Page number for JSON:API pagination.
+      schema:
+        type: integer
+    PageSize:
+      name: page[size]
+      in: query
+      required: false
+      description: Number of records per page.
+      schema:
+        type: integer
   securitySchemes:
     TokenAuth:
       type: apiKey
