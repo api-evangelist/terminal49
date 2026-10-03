@@ -91,37 +91,6 @@ paths:
           description: GeoJSON map data for the container journey.
 components:
   schemas:
-    JsonApiLinks:
-      type: object
-      properties:
-        self:
-          type: string
-        first:
-          type: string
-        prev:
-          type: string
-        next:
-          type: string
-        last:
-          type: string
-    ContainerSingle:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ContainerResource'
-    ContainerResource:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-          enum:
-          - container
-        attributes:
-          $ref: '#/components/schemas/ContainerAttributes'
-        relationships:
-          type: object
     ContainerAttributes:
       type: object
       properties:
@@ -249,7 +218,45 @@ components:
             $ref: '#/components/schemas/ContainerResource'
         links:
           $ref: '#/components/schemas/JsonApiLinks'
+    JsonApiLinks:
+      type: object
+      properties:
+        self:
+          type: string
+        first:
+          type: string
+        prev:
+          type: string
+        next:
+          type: string
+        last:
+          type: string
+    ContainerResource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - container
+        attributes:
+          $ref: '#/components/schemas/ContainerAttributes'
+        relationships:
+          type: object
+    ContainerSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ContainerResource'
   parameters:
+    PageSize:
+      name: page[size]
+      in: query
+      required: false
+      description: Number of records per page.
+      schema:
+        type: integer
     ResourceId:
       name: id
       in: path
@@ -262,13 +269,6 @@ components:
       in: query
       required: false
       description: Page number for JSON:API pagination.
-      schema:
-        type: integer
-    PageSize:
-      name: page[size]
-      in: query
-      required: false
-      description: Number of records per page.
       schema:
         type: integer
   securitySchemes:

@@ -61,6 +61,26 @@ paths:
                 $ref: '#/components/schemas/TransportEventList'
 components:
   schemas:
+    TransportEventResource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - transport_event
+        attributes:
+          $ref: '#/components/schemas/TransportEventAttributes'
+    TransportEventList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransportEventResource'
+        links:
+          $ref: '#/components/schemas/JsonApiLinks'
     JsonApiLinks:
       type: object
       properties:
@@ -74,15 +94,6 @@ components:
           type: string
         last:
           type: string
-    TransportEventList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransportEventResource'
-        links:
-          $ref: '#/components/schemas/JsonApiLinks'
     TransportEventAttributes:
       type: object
       properties:
@@ -115,18 +126,14 @@ components:
           type:
           - string
           - 'null'
-    TransportEventResource:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-          enum:
-          - transport_event
-        attributes:
-          $ref: '#/components/schemas/TransportEventAttributes'
   parameters:
+    PageSize:
+      name: page[size]
+      in: query
+      required: false
+      description: Number of records per page.
+      schema:
+        type: integer
     ResourceId:
       name: id
       in: path
@@ -139,13 +146,6 @@ components:
       in: query
       required: false
       description: Page number for JSON:API pagination.
-      schema:
-        type: integer
-    PageSize:
-      name: page[size]
-      in: query
-      required: false
-      description: Number of records per page.
       schema:
         type: integer
   securitySchemes:

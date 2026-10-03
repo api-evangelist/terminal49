@@ -32,15 +32,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/TerminalSingle'
 components:
-  parameters:
-    ResourceId:
-      name: id
-      in: path
-      required: true
-      description: The resource identifier (UUID).
-      schema:
-        type: string
   schemas:
+    TerminalSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/TerminalResource'
     TerminalResource:
       type: object
       properties:
@@ -69,11 +66,14 @@ components:
           - 'null'
         port_locode:
           type: string
-    TerminalSingle:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/TerminalResource'
+  parameters:
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier (UUID).
+      schema:
+        type: string
   securitySchemes:
     TokenAuth:
       type: apiKey

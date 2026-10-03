@@ -136,44 +136,27 @@ paths:
                 $ref: '#/components/schemas/WebhookNotificationSingle'
 components:
   schemas:
-    WebhookNotificationSingle:
+    WebhookNotificationAttributes:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/WebhookNotificationResource'
-    JsonApiLinks:
-      type: object
-      properties:
-        self:
+        event:
           type: string
-        first:
-          type: string
-        prev:
-          type: string
-        next:
-          type: string
-        last:
-          type: string
-    WebhookNotificationList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebhookNotificationResource'
-        links:
-          $ref: '#/components/schemas/JsonApiLinks'
-    WebhookResource:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
+        delivery_status:
           type: string
           enum:
-          - webhook
-        attributes:
-          $ref: '#/components/schemas/WebhookAttributes'
+          - pending
+          - succeeded
+          - failed
+        response_status_code:
+          type:
+          - integer
+          - 'null'
+        created_at:
+          type: string
+          format: date-time
+        body:
+          type: object
+          description: The JSON:API payload delivered to the webhook URL.
     WebhookList:
       type: object
       properties:
@@ -183,6 +166,11 @@ components:
             $ref: '#/components/schemas/WebhookResource'
         links:
           $ref: '#/components/schemas/JsonApiLinks'
+    WebhookNotificationSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/WebhookNotificationResource'
     WebhookNotificationResource:
       type: object
       properties:
@@ -218,42 +206,40 @@ components:
         created_at:
           type: string
           format: date-time
-    WebhookNotificationAttributes:
+    WebhookResource:
       type: object
       properties:
-        event:
+        id:
           type: string
-        delivery_status:
+        type:
           type: string
           enum:
-          - pending
-          - succeeded
-          - failed
-        response_status_code:
-          type:
-          - integer
-          - 'null'
-        created_at:
+          - webhook
+        attributes:
+          $ref: '#/components/schemas/WebhookAttributes'
+    JsonApiLinks:
+      type: object
+      properties:
+        self:
           type: string
-          format: date-time
-        body:
-          type: object
-          description: The JSON:API payload delivered to the webhook URL.
+        first:
+          type: string
+        prev:
+          type: string
+        next:
+          type: string
+        last:
+          type: string
+    WebhookNotificationList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookNotificationResource'
+        links:
+          $ref: '#/components/schemas/JsonApiLinks'
   parameters:
-    ResourceId:
-      name: id
-      in: path
-      required: true
-      description: The resource identifier (UUID).
-      schema:
-        type: string
-    PageNumber:
-      name: page[number]
-      in: query
-      required: false
-      description: Page number for JSON:API pagination.
-      schema:
-        type: integer
     PageSize:
       name: page[size]
       in: query
@@ -261,6 +247,20 @@ components:
       description: Number of records per page.
       schema:
         type: integer
+    PageNumber:
+      name: page[number]
+      in: query
+      required: false
+      description: Page number for JSON:API pagination.
+      schema:
+        type: integer
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier (UUID).
+      schema:
+        type: string
   securitySchemes:
     TokenAuth:
       type: apiKey

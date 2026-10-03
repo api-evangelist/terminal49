@@ -99,28 +99,6 @@ paths:
                 $ref: '#/components/schemas/ShipmentSingle'
 components:
   schemas:
-    ShipmentList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ShipmentResource'
-        links:
-          $ref: '#/components/schemas/JsonApiLinks'
-    JsonApiLinks:
-      type: object
-      properties:
-        self:
-          type: string
-        first:
-          type: string
-        prev:
-          type: string
-        next:
-          type: string
-        last:
-          type: string
     ShipmentSingle:
       type: object
       properties:
@@ -195,6 +173,28 @@ components:
           type:
           - string
           - 'null'
+    JsonApiLinks:
+      type: object
+      properties:
+        self:
+          type: string
+        first:
+          type: string
+        prev:
+          type: string
+        next:
+          type: string
+        last:
+          type: string
+    ShipmentList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShipmentResource'
+        links:
+          $ref: '#/components/schemas/JsonApiLinks'
     ShipmentResource:
       type: object
       properties:
@@ -209,20 +209,6 @@ components:
         relationships:
           type: object
   parameters:
-    ResourceId:
-      name: id
-      in: path
-      required: true
-      description: The resource identifier (UUID).
-      schema:
-        type: string
-    PageNumber:
-      name: page[number]
-      in: query
-      required: false
-      description: Page number for JSON:API pagination.
-      schema:
-        type: integer
     PageSize:
       name: page[size]
       in: query
@@ -230,6 +216,20 @@ components:
       description: Number of records per page.
       schema:
         type: integer
+    PageNumber:
+      name: page[number]
+      in: query
+      required: false
+      description: Page number for JSON:API pagination.
+      schema:
+        type: integer
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier (UUID).
+      schema:
+        type: string
   securitySchemes:
     TokenAuth:
       type: apiKey

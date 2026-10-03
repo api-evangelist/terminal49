@@ -46,6 +46,22 @@ paths:
                 $ref: '#/components/schemas/ShippingLineSingle'
 components:
   schemas:
+    ShippingLineSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ShippingLineResource'
+    ShippingLineResource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - shipping_line
+        attributes:
+          $ref: '#/components/schemas/ShippingLineAttributes'
     JsonApiLinks:
       type: object
       properties:
@@ -81,22 +97,6 @@ components:
           type: array
           items:
             type: string
-    ShippingLineResource:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-          enum:
-          - shipping_line
-        attributes:
-          $ref: '#/components/schemas/ShippingLineAttributes'
-    ShippingLineSingle:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ShippingLineResource'
   parameters:
     ResourceId:
       name: id
