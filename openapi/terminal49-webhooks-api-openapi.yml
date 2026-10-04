@@ -136,6 +136,88 @@ paths:
                 $ref: '#/components/schemas/WebhookNotificationSingle'
 components:
   schemas:
+    WebhookAttributes:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The callback URL Terminal49 POSTs notifications to.
+        active:
+          type: boolean
+        events:
+          type: array
+          items:
+            type: string
+            description: Event types to subscribe to (e.g. tracking_request.succeeded, container.transport.vessel_departed).
+        secret:
+          type: string
+          description: Shared secret used to sign notification payloads.
+        created_at:
+          type: string
+          format: date-time
+    WebhookNotificationList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookNotificationResource'
+        links:
+          $ref: '#/components/schemas/JsonApiLinks'
+    WebhookNotificationResource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - webhook_notification
+        attributes:
+          $ref: '#/components/schemas/WebhookNotificationAttributes'
+    WebhookResource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - webhook
+        attributes:
+          $ref: '#/components/schemas/WebhookAttributes'
+    WebhookNotificationSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/WebhookNotificationResource'
+    JsonApiLinks:
+      type: object
+      properties:
+        self:
+          type: string
+        first:
+          type: string
+        prev:
+          type: string
+        next:
+          type: string
+        last:
+          type: string
+    WebhookList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookResource'
+        links:
+          $ref: '#/components/schemas/JsonApiLinks'
+    WebhookSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/WebhookResource'
     WebhookNotificationAttributes:
       type: object
       properties:
@@ -157,103 +239,7 @@ components:
         body:
           type: object
           description: The JSON:API payload delivered to the webhook URL.
-    WebhookList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebhookResource'
-        links:
-          $ref: '#/components/schemas/JsonApiLinks'
-    WebhookNotificationSingle:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/WebhookNotificationResource'
-    WebhookNotificationResource:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-          enum:
-          - webhook_notification
-        attributes:
-          $ref: '#/components/schemas/WebhookNotificationAttributes'
-    WebhookSingle:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/WebhookResource'
-    WebhookAttributes:
-      type: object
-      properties:
-        url:
-          type: string
-          description: The callback URL Terminal49 POSTs notifications to.
-        active:
-          type: boolean
-        events:
-          type: array
-          items:
-            type: string
-            description: Event types to subscribe to (e.g. tracking_request.succeeded, container.transport.vessel_departed).
-        secret:
-          type: string
-          description: Shared secret used to sign notification payloads.
-        created_at:
-          type: string
-          format: date-time
-    WebhookResource:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-          enum:
-          - webhook
-        attributes:
-          $ref: '#/components/schemas/WebhookAttributes'
-    JsonApiLinks:
-      type: object
-      properties:
-        self:
-          type: string
-        first:
-          type: string
-        prev:
-          type: string
-        next:
-          type: string
-        last:
-          type: string
-    WebhookNotificationList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebhookNotificationResource'
-        links:
-          $ref: '#/components/schemas/JsonApiLinks'
   parameters:
-    PageSize:
-      name: page[size]
-      in: query
-      required: false
-      description: Number of records per page.
-      schema:
-        type: integer
-    PageNumber:
-      name: page[number]
-      in: query
-      required: false
-      description: Page number for JSON:API pagination.
-      schema:
-        type: integer
     ResourceId:
       name: id
       in: path
@@ -261,6 +247,20 @@ components:
       description: The resource identifier (UUID).
       schema:
         type: string
+    PageNumber:
+      name: page[number]
+      in: query
+      required: false
+      description: Page number for JSON:API pagination.
+      schema:
+        type: integer
+    PageSize:
+      name: page[size]
+      in: query
+      required: false
+      description: Number of records per page.
+      schema:
+        type: integer
   securitySchemes:
     TokenAuth:
       type: apiKey

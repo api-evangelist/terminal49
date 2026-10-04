@@ -33,22 +33,6 @@ paths:
                 $ref: '#/components/schemas/TerminalSingle'
 components:
   schemas:
-    TerminalSingle:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/TerminalResource'
-    TerminalResource:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-          enum:
-          - terminal
-        attributes:
-          $ref: '#/components/schemas/TerminalAttributes'
     TerminalAttributes:
       type: object
       properties:
@@ -66,6 +50,22 @@ components:
           - 'null'
         port_locode:
           type: string
+    TerminalSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/TerminalResource'
+    TerminalResource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - terminal
+        attributes:
+          $ref: '#/components/schemas/TerminalAttributes'
   parameters:
     ResourceId:
       name: id

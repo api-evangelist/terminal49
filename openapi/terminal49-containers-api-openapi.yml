@@ -90,7 +90,38 @@ paths:
         '200':
           description: GeoJSON map data for the container journey.
 components:
+  parameters:
+    PageNumber:
+      name: page[number]
+      in: query
+      required: false
+      description: Page number for JSON:API pagination.
+      schema:
+        type: integer
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier (UUID).
+      schema:
+        type: string
+    PageSize:
+      name: page[size]
+      in: query
+      required: false
+      description: Number of records per page.
+      schema:
+        type: integer
   schemas:
+    ContainerList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContainerResource'
+        links:
+          $ref: '#/components/schemas/JsonApiLinks'
     ContainerAttributes:
       type: object
       properties:
@@ -209,15 +240,6 @@ components:
           - string
           - 'null'
           format: date-time
-    ContainerList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContainerResource'
-        links:
-          $ref: '#/components/schemas/JsonApiLinks'
     JsonApiLinks:
       type: object
       properties:
@@ -231,6 +253,11 @@ components:
           type: string
         last:
           type: string
+    ContainerSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ContainerResource'
     ContainerResource:
       type: object
       properties:
@@ -244,33 +271,6 @@ components:
           $ref: '#/components/schemas/ContainerAttributes'
         relationships:
           type: object
-    ContainerSingle:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ContainerResource'
-  parameters:
-    PageSize:
-      name: page[size]
-      in: query
-      required: false
-      description: Number of records per page.
-      schema:
-        type: integer
-    ResourceId:
-      name: id
-      in: path
-      required: true
-      description: The resource identifier (UUID).
-      schema:
-        type: string
-    PageNumber:
-      name: page[number]
-      in: query
-      required: false
-      description: Page number for JSON:API pagination.
-      schema:
-        type: integer
   securitySchemes:
     TokenAuth:
       type: apiKey

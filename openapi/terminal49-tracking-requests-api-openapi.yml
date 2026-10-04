@@ -87,7 +87,80 @@ paths:
               schema:
                 $ref: '#/components/schemas/TrackingRequestSingle'
 components:
+  parameters:
+    PageNumber:
+      name: page[number]
+      in: query
+      required: false
+      description: Page number for JSON:API pagination.
+      schema:
+        type: integer
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier (UUID).
+      schema:
+        type: string
+    PageSize:
+      name: page[size]
+      in: query
+      required: false
+      description: Number of records per page.
+      schema:
+        type: integer
   schemas:
+    TrackingRequestResource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - tracking_request
+        attributes:
+          $ref: '#/components/schemas/TrackingRequestAttributes'
+    TrackingRequestList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrackingRequestResource'
+        links:
+          $ref: '#/components/schemas/JsonApiLinks'
+    TrackingRequestCreate:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - tracking_request
+            attributes:
+              type: object
+              required:
+              - request_number
+              - request_type
+              - scac
+              properties:
+                request_number:
+                  type: string
+                request_type:
+                  type: string
+                  enum:
+                  - bill_of_lading
+                  - booking_number
+                  - container
+                scac:
+                  type: string
+                ref_numbers:
+                  type: array
+                  items:
+                    type: string
     TrackingRequestAttributes:
       type: object
       properties:
@@ -121,48 +194,6 @@ components:
         created_at:
           type: string
           format: date-time
-    TrackingRequestResource:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-          enum:
-          - tracking_request
-        attributes:
-          $ref: '#/components/schemas/TrackingRequestAttributes'
-    TrackingRequestCreate:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            type:
-              type: string
-              enum:
-              - tracking_request
-            attributes:
-              type: object
-              required:
-              - request_number
-              - request_type
-              - scac
-              properties:
-                request_number:
-                  type: string
-                request_type:
-                  type: string
-                  enum:
-                  - bill_of_lading
-                  - booking_number
-                  - container
-                scac:
-                  type: string
-                ref_numbers:
-                  type: array
-                  items:
-                    type: string
     TrackingRequestSingle:
       type: object
       properties:
@@ -181,37 +212,6 @@ components:
           type: string
         last:
           type: string
-    TrackingRequestList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/TrackingRequestResource'
-        links:
-          $ref: '#/components/schemas/JsonApiLinks'
-  parameters:
-    PageSize:
-      name: page[size]
-      in: query
-      required: false
-      description: Number of records per page.
-      schema:
-        type: integer
-    ResourceId:
-      name: id
-      in: path
-      required: true
-      description: The resource identifier (UUID).
-      schema:
-        type: string
-    PageNumber:
-      name: page[number]
-      in: query
-      required: false
-      description: Page number for JSON:API pagination.
-      schema:
-        type: integer
   securitySchemes:
     TokenAuth:
       type: apiKey
