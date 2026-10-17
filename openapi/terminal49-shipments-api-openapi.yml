@@ -112,15 +112,19 @@ components:
           $ref: '#/components/schemas/ShipmentAttributes'
         relationships:
           type: object
-    ShipmentList:
+    JsonApiLinks:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ShipmentResource'
-        links:
-          $ref: '#/components/schemas/JsonApiLinks'
+        self:
+          type: string
+        first:
+          type: string
+        prev:
+          type: string
+        next:
+          type: string
+        last:
+          type: string
     ShipmentAttributes:
       type: object
       properties:
@@ -195,27 +199,16 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ShipmentResource'
-    JsonApiLinks:
+    ShipmentList:
       type: object
       properties:
-        self:
-          type: string
-        first:
-          type: string
-        prev:
-          type: string
-        next:
-          type: string
-        last:
-          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShipmentResource'
+        links:
+          $ref: '#/components/schemas/JsonApiLinks'
   parameters:
-    ResourceId:
-      name: id
-      in: path
-      required: true
-      description: The resource identifier (UUID).
-      schema:
-        type: string
     PageNumber:
       name: page[number]
       in: query
@@ -230,6 +223,13 @@ components:
       description: Number of records per page.
       schema:
         type: integer
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier (UUID).
+      schema:
+        type: string
   securitySchemes:
     TokenAuth:
       type: apiKey

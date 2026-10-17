@@ -113,15 +113,6 @@ components:
       schema:
         type: integer
   schemas:
-    ContainerList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContainerResource'
-        links:
-          $ref: '#/components/schemas/JsonApiLinks'
     ContainerAttributes:
       type: object
       properties:
@@ -240,6 +231,11 @@ components:
           - string
           - 'null'
           format: date-time
+    ContainerSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ContainerResource'
     JsonApiLinks:
       type: object
       properties:
@@ -253,11 +249,15 @@ components:
           type: string
         last:
           type: string
-    ContainerSingle:
+    ContainerList:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/ContainerResource'
+          type: array
+          items:
+            $ref: '#/components/schemas/ContainerResource'
+        links:
+          $ref: '#/components/schemas/JsonApiLinks'
     ContainerResource:
       type: object
       properties:

@@ -135,7 +135,42 @@ paths:
               schema:
                 $ref: '#/components/schemas/WebhookNotificationSingle'
 components:
+  parameters:
+    PageNumber:
+      name: page[number]
+      in: query
+      required: false
+      description: Page number for JSON:API pagination.
+      schema:
+        type: integer
+    PageSize:
+      name: page[size]
+      in: query
+      required: false
+      description: Number of records per page.
+      schema:
+        type: integer
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: The resource identifier (UUID).
+      schema:
+        type: string
   schemas:
+    JsonApiLinks:
+      type: object
+      properties:
+        self:
+          type: string
+        first:
+          type: string
+        prev:
+          type: string
+        next:
+          type: string
+        last:
+          type: string
     WebhookAttributes:
       type: object
       properties:
@@ -155,15 +190,11 @@ components:
         created_at:
           type: string
           format: date-time
-    WebhookNotificationList:
+    WebhookNotificationSingle:
       type: object
       properties:
         data:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebhookNotificationResource'
-        links:
-          $ref: '#/components/schemas/JsonApiLinks'
+          $ref: '#/components/schemas/WebhookNotificationResource'
     WebhookNotificationResource:
       type: object
       properties:
@@ -175,6 +206,20 @@ components:
           - webhook_notification
         attributes:
           $ref: '#/components/schemas/WebhookNotificationAttributes'
+    WebhookNotificationList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookNotificationResource'
+        links:
+          $ref: '#/components/schemas/JsonApiLinks'
+    WebhookSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/WebhookResource'
     WebhookResource:
       type: object
       properties:
@@ -186,24 +231,6 @@ components:
           - webhook
         attributes:
           $ref: '#/components/schemas/WebhookAttributes'
-    WebhookNotificationSingle:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/WebhookNotificationResource'
-    JsonApiLinks:
-      type: object
-      properties:
-        self:
-          type: string
-        first:
-          type: string
-        prev:
-          type: string
-        next:
-          type: string
-        last:
-          type: string
     WebhookList:
       type: object
       properties:
@@ -213,11 +240,6 @@ components:
             $ref: '#/components/schemas/WebhookResource'
         links:
           $ref: '#/components/schemas/JsonApiLinks'
-    WebhookSingle:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/WebhookResource'
     WebhookNotificationAttributes:
       type: object
       properties:
@@ -239,28 +261,6 @@ components:
         body:
           type: object
           description: The JSON:API payload delivered to the webhook URL.
-  parameters:
-    ResourceId:
-      name: id
-      in: path
-      required: true
-      description: The resource identifier (UUID).
-      schema:
-        type: string
-    PageNumber:
-      name: page[number]
-      in: query
-      required: false
-      description: Page number for JSON:API pagination.
-      schema:
-        type: integer
-    PageSize:
-      name: page[size]
-      in: query
-      required: false
-      description: Number of records per page.
-      schema:
-        type: integer
   securitySchemes:
     TokenAuth:
       type: apiKey
