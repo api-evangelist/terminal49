@@ -1,4 +1,4 @@
-# Terminal49 (terminal49)
+# Terminal49
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,158 +66,136 @@
 
 Terminal49 is an automated container and ocean-freight tracking platform. Its v2 REST API (JSON:API) lets shippers, forwarders, and logistics software track Bills of Lading, bookings, and container numbers across global ocean carriers and North American rail, returning normalized milestones, ETAs, terminal availability, holds, demurrage fees, and last free day, with webhooks for real-time updates.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/terminal49/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/terminal49/refs/heads/main/apis.yml)
+**Areas:** Container Tracking · Ocean Freight · Supply Chain · Logistics · Shipping · Freight
 
-## Tags
+## Terminal49 on APIs.io
 
-- Container Tracking
-- Ocean Freight
-- Supply Chain
-- Logistics
-- Shipping
+Everything profiled for Terminal49 is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/terminal49/](https://apis.io/providers/terminal49/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Terminal49 Containers API](https://apis.io/apis/terminal49/terminal49-containers-api/) — The Containers API from Terminal49 — 4 operation(s) for containers.
+- [Terminal49 Shipments API](https://apis.io/apis/terminal49/terminal49-shipments-api/) — The Shipments API from Terminal49 — 4 operation(s) for shipments.
+- [Terminal49 Shipping Lines API](https://apis.io/apis/terminal49/terminal49-shipping-lines-api/) — The Shipping Lines API from Terminal49 — 2 operation(s) for shipping lines.
+- [Terminal49 Terminals API](https://apis.io/apis/terminal49/terminal49-terminals-api/) — The Terminals API from Terminal49 — 1 operation(s) for terminals.
+- [Terminal49 Tracking Requests API](https://apis.io/apis/terminal49/terminal49-tracking-requests-api/) — The Tracking Requests API from Terminal49 — 2 operation(s) for tracking requests.
+- [Terminal49 Transport Events API](https://apis.io/apis/terminal49/terminal49-transport-events-api/) — The Transport Events API from Terminal49 — 3 operation(s) for transport events.
+- [Terminal49 Webhooks API](https://apis.io/apis/terminal49/terminal49-webhooks-api/) — The Webhooks API from Terminal49 — 5 operation(s) for webhooks.
 
-## APIs
+### Published properties
 
-### Terminal49 Tracking Requests API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Submit a Bill of Lading, booking, or container number plus carrier SCAC to ask Terminal49 to begin tracking a shipment, then list, retrieve, and edit those tracking requests.
+#### MCP servers (1)
 
-- **Human URL:** [https://terminal49.com/docs/api-docs/api-reference/introduction](https://terminal49.com/docs/api-docs/api-reference/introduction)
-- **Base URL:** `https://api.terminal49.com/v2`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [terminal49](https://apis.io/servers/terminal49/terminal49/)
 
-- Tracking Requests
-- Bill of Lading
-- Booking
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation](https://terminal49.com/docs/api-docs/getting-started/tracking-shipments-and-containers/)
-- [API Reference](https://terminal49.com/docs/api-docs/api-reference/introduction)
-- [OpenAPI](openapi/terminal49-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/terminal49.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/terminal49.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Terminal49 Agentic Access](https://apis.io/agentic-access/terminal49/terminal49-agentic-access/)
 
-### Terminal49 Shipments API
+#### Collections (8)
 
-List and retrieve shipments with normalized BOL data, port of lading and discharge, vessel and voyage, POD ETA/ATA and destination ETA, and stop or resume tracking controls.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://terminal49.com/docs/api-docs/getting-started/list-shipments-and-containers/](https://terminal49.com/docs/api-docs/getting-started/list-shipments-and-containers/)
-- **Base URL:** `https://api.terminal49.com/v2`
+- [Terminal49 API](https://apis.io/collections/terminal49/open-terminal49/)
+- [Terminal49 Containers API](https://apis.io/collections/terminal49/open-terminal49-containers-api/)
+- [Terminal49 Containers Shipments API](https://apis.io/collections/terminal49/open-terminal49-shipments-api/)
+- [Terminal49 Containers Shipping Lines API](https://apis.io/collections/terminal49/open-terminal49-shipping-lines-api/)
+- [Terminal49 Containers Terminals API](https://apis.io/collections/terminal49/open-terminal49-terminals-api/)
+- [Terminal49 Containers Tracking Requests API](https://apis.io/collections/terminal49/open-terminal49-tracking-requests-api/)
+- [Terminal49 Containers Transport Events API](https://apis.io/collections/terminal49/open-terminal49-transport-events-api/)
+- [Terminal49 Containers Webhooks API](https://apis.io/collections/terminal49/open-terminal49-webhooks-api/)
 
-#### Tags
+#### Security (2)
 
-- Shipments
-- ETA
-- Milestones
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Terminal49 Authentication](https://apis.io/security/terminal49/terminal49-authentication/)
+- [Terminal49 Domain Security](https://apis.io/security/terminal49/terminal49-domain-security/)
 
-- [Documentation](https://terminal49.com/docs/api-docs/getting-started/list-shipments-and-containers/)
-- [API Reference](https://terminal49.com/docs/api-docs/api-reference/introduction)
-- [OpenAPI](openapi/terminal49-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/terminal49.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/terminal49.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Plans and pricing (1)
 
-### Terminal49 Containers API
+Published plans, tiers and prices.
 
-List, retrieve, and refresh containers with equipment type, current status, terminal availability, holds, demurrage fees, last free day, pickup appointment, rail milestones, and GeoJSON map data.
+- [Terminal49 Plans Pricing](https://apis.io/plans/terminal49/terminal49-plans-pricing/)
 
-- **Human URL:** [https://terminal49.com/docs/api-docs/getting-started/list-shipments-and-containers/](https://terminal49.com/docs/api-docs/getting-started/list-shipments-and-containers/)
-- **Base URL:** `https://api.terminal49.com/v2`
+#### Rate limits (1)
 
-#### Tags
+Published request limits.
 
-- Containers
-- Availability
-- Demurrage
+- [Terminal49 Rate Limits](https://apis.io/rate-limits/terminal49/terminal49-rate-limits/)
 
-#### Properties
+#### FinOps (1)
 
-- [Documentation](https://terminal49.com/docs/api-docs/getting-started/list-shipments-and-containers/)
-- [API Reference](https://terminal49.com/docs/api-docs/api-reference/introduction)
-- [OpenAPI](openapi/terminal49-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/terminal49.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/terminal49.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+What the API costs to run, by operation.
 
-### Terminal49 Transport Events API
+- [Terminal49 Finops](https://apis.io/finops/terminal49/terminal49-finops/)
 
-Retrieve the timeline of normalized transport events (milestones such as vessel departed, vessel arrived, discharged, full out, and rail events) for a container.
+## Where to find this API
 
-- **Human URL:** [https://terminal49.com/docs/api-docs/api-reference/introduction](https://terminal49.com/docs/api-docs/api-reference/introduction)
-- **Base URL:** `https://api.terminal49.com/v2`
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-#### Tags
-
-- Transport Events
-- Milestones
-- Webhooks
-
-#### Properties
-
-- [API Reference](https://terminal49.com/docs/api-docs/api-reference/introduction)
-- [OpenAPI](openapi/terminal49-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/terminal49.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/terminal49.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Terminal49 Terminals & Shipping Lines API
-
-Look up supported shipping lines and their SCAC codes, and retrieve terminal reference details at destination ports.
-
-- **Human URL:** [https://terminal49.com/docs/api-docs/api-reference/introduction](https://terminal49.com/docs/api-docs/api-reference/introduction)
-- **Base URL:** `https://api.terminal49.com/v2`
-
-#### Tags
-
-- Terminals
-- Shipping Lines
-- SCAC
-
-#### Properties
-
-- [API Reference](https://terminal49.com/docs/api-docs/api-reference/introduction)
-- [OpenAPI](openapi/terminal49-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/terminal49.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/terminal49.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Terminal49 Webhooks API
-
-Register, list, retrieve, edit, delete, and test webhooks (callback URLs Terminal49 POSTs to on updates), and review the webhook notifications and example payloads that have been sent.
-
-- **Human URL:** [https://terminal49.com/docs/api-docs/in-depth-guides/quickstart/](https://terminal49.com/docs/api-docs/in-depth-guides/quickstart/)
-- **Base URL:** `https://api.terminal49.com/v2`
-
-#### Tags
-
-- Webhooks
-- Notifications
-- Real-time
-
-#### Properties
-
-- [Documentation](https://terminal49.com/docs/api-docs/in-depth-guides/quickstart/)
-- [API Reference](https://terminal49.com/docs/api-docs/api-reference/introduction)
-- [OpenAPI](openapi/terminal49-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/terminal49.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/terminal49.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/Terminal49)
-- [LinkedIn](https://www.linkedin.com/company/terminal49)
 - [Website](https://www.terminal49.com)
 - [Documentation](https://terminal49.com/docs/api-docs/api-reference/introduction)
-- [Plans](plans/terminal49-plans-pricing.yml)
-- [Rate Limits](rate-limits/terminal49-rate-limits.yml)
-- [Fin Ops](finops/terminal49-finops.yml)
+- [Blog](https://www.terminal49.com/blog)
+- [GitHub](https://github.com/Terminal49)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 27.2** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 48.8 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 7.9 |
+
+**Agent readiness 45.8** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/terminal49/](https://apis.io/providers/terminal49/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Terminal49: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/terminal49/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
