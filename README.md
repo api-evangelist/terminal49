@@ -64,7 +64,7 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Terminal49 is an automated container and ocean-freight tracking platform. Its v2 REST API (JSON:API) lets shippers, forwarders, and logistics software track Bills of Lading, bookings, and container numbers across global ocean carriers and North American rail, returning normalized milestones, ETAs, terminal availability, holds, demurrage fees, and last free day, with webhooks for real-time updates.
+Terminal49 automates container and shipment tracking with real‑time visibility across ocean, rail and inland moves. Its v2 REST JSON:API lets shippers, forwarders and logistics software track bills of lading, bookings, container numbers and transport events, delivering normalized milestones, ETAs, terminal availability, holds, demurrage fees and last free day, plus webhooks for instant updates and risk management.
 
 **Areas:** Container Tracking · Ocean Freight · Supply Chain · Logistics · Shipping · Freight
 
@@ -72,19 +72,38 @@ Terminal49 is an automated container and ocean-freight tracking platform. Its v2
 
 Everything profiled for Terminal49 is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/terminal49/](https://apis.io/providers/terminal49/)** — or go straight to one of the APIs or properties below.
 
-### APIs (7)
+### APIs (20)
 
-- [Terminal49 Containers API](https://apis.io/apis/terminal49/terminal49-containers-api/) — The Containers API from Terminal49 — 4 operation(s) for containers.
-- [Terminal49 Shipments API](https://apis.io/apis/terminal49/terminal49-shipments-api/) — The Shipments API from Terminal49 — 4 operation(s) for shipments.
 - [Terminal49 Shipping Lines API](https://apis.io/apis/terminal49/terminal49-shipping-lines-api/) — The Shipping Lines API from Terminal49 — 2 operation(s) for shipping lines.
 - [Terminal49 Terminals API](https://apis.io/apis/terminal49/terminal49-terminals-api/) — The Terminals API from Terminal49 — 1 operation(s) for terminals.
 - [Terminal49 Tracking Requests API](https://apis.io/apis/terminal49/terminal49-tracking-requests-api/) — The Tracking Requests API from Terminal49 — 2 operation(s) for tracking requests.
 - [Terminal49 Transport Events API](https://apis.io/apis/terminal49/terminal49-transport-events-api/) — The Transport Events API from Terminal49 — 3 operation(s) for transport events.
 - [Terminal49 Webhooks API](https://apis.io/apis/terminal49/terminal49-webhooks-api/) — The Webhooks API from Terminal49 — 5 operation(s) for webhooks.
+- [Terminal49 Containers API](https://apis.io/apis/terminal49/terminal49-containers-api/) — The Containers API from Terminal49 — 9 operation(s) for containers.
+- [Terminal49 Custom Field Definitions API](https://apis.io/apis/terminal49/terminal49-custom-field-definitions-api/) — The Custom Field Definitions API from Terminal49 — 2 operation(s) for custom field definitions.
+- [Terminal49 Custom Field Options API](https://apis.io/apis/terminal49/terminal49-custom-field-options-api/) — The Custom Field Options API from Terminal49 — 2 operation(s) for custom field options.
+- [Terminal49 Custom Fields API](https://apis.io/apis/terminal49/terminal49-custom-fields-api/) — The Custom Fields API from Terminal49 — 2 operation(s) for custom fields.
+- [Terminal49 Document Schemas API](https://apis.io/apis/terminal49/terminal49-document-schemas-api/) — The Document Schemas API from Terminal49 — 1 operation(s) for document schemas.
+- [Terminal49 Documents API](https://apis.io/apis/terminal49/terminal49-documents-api/) — The Documents API from Terminal49 — 8 operation(s) for documents.
+- [Terminal49 Email Submissions API](https://apis.io/apis/terminal49/terminal49-email-submissions-api/) — The Email Submissions API from Terminal49 — 2 operation(s) for email submissions.
+- [Terminal49 Metro Areas API](https://apis.io/apis/terminal49/terminal49-metro-areas-api/) — The Metro Areas API from Terminal49 — 1 operation(s) for metro areas.
+- [Terminal49 Parties API](https://apis.io/apis/terminal49/terminal49-parties-api/) — The Parties API from Terminal49 — 2 operation(s) for parties.
+- [Terminal49 Ports API](https://apis.io/apis/terminal49/terminal49-ports-api/) — The Ports API from Terminal49 — 1 operation(s) for ports.
+- [Terminal49 Routing (Paid) API](https://apis.io/apis/terminal49/terminal49-routing-paid-api/) — The Routing (Paid) API from Terminal49 — 3 operation(s) for routing (paid).
+- [Terminal49 Search API](https://apis.io/apis/terminal49/terminal49-search-api/) — The Search API from Terminal49 — 1 operation(s) for search.
+- [Terminal49 Shipments API](https://apis.io/apis/terminal49/terminal49-shipments-api/) — The Shipments API from Terminal49 — 6 operation(s) for shipments.
+- [Terminal49 Vessels API](https://apis.io/apis/terminal49/terminal49-vessels-api/) — The Vessels API from Terminal49 — 4 operation(s) for vessels.
+- [Terminal49 Webhook Notifications API](https://apis.io/apis/terminal49/terminal49-webhook-notifications-api/) — The Webhook Notifications API from Terminal49 — 3 operation(s) for webhook notifications.
 
 ### Published properties
 
 Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Terminal49 Webhooks](https://apis.io/asyncapis/terminal49/terminal49-webhooks/)
 
 #### MCP servers (1)
 
@@ -98,6 +117,34 @@ Which operations an agent can call, which act, and which need a human in the loo
 
 - [Terminal49 Agentic Access](https://apis.io/agentic-access/terminal49/terminal49-agentic-access/)
 
+#### JSON Schema (17)
+
+The data models the API reads and writes.
+
+- [Container model](https://apis.io/schemas/terminal49/terminal49-container/)
+- [Current Vessel](https://apis.io/schemas/terminal49/terminal49-current-vessel-feature-properties/)
+- [Document](https://apis.io/schemas/terminal49/terminal49-document/)
+- [Raw Event Model](https://apis.io/schemas/terminal49/terminal49-raw-event/)
+- [Shipment model](https://apis.io/schemas/terminal49/terminal49-shipment/)
+- [ShippingLineList](https://apis.io/schemas/terminal49/terminal49-shipping-line-list/)
+- [ShippingLineSingle](https://apis.io/schemas/terminal49/terminal49-shipping-line-single/)
+- [TerminalSingle](https://apis.io/schemas/terminal49/terminal49-terminal-single/)
+- [TrackingRequestCreate](https://apis.io/schemas/terminal49/terminal49-tracking-request-create/)
+- [TrackingRequestList](https://apis.io/schemas/terminal49/terminal49-tracking-request-list/)
+- [TrackingRequestSingle](https://apis.io/schemas/terminal49/terminal49-tracking-request-single/)
+- [Transport Event Model](https://apis.io/schemas/terminal49/terminal49-transport-event/)
+- [TransportEventList](https://apis.io/schemas/terminal49/terminal49-transport-event-list/)
+- [WebhookList](https://apis.io/schemas/terminal49/terminal49-webhook-list/)
+- [WebhookNotificationList](https://apis.io/schemas/terminal49/terminal49-webhook-notification-list/)
+- [WebhookNotificationSingle](https://apis.io/schemas/terminal49/terminal49-webhook-notification-single/)
+- [WebhookSingle](https://apis.io/schemas/terminal49/terminal49-webhook-single/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Terminal49 Context](https://apis.io/jsonld/terminal49/terminal49-context/)
+
 #### Collections (8)
 
 Postman and Open Collection request collections.
@@ -110,6 +157,12 @@ Postman and Open Collection request collections.
 - [Terminal49 Containers Tracking Requests API](https://apis.io/collections/terminal49/open-terminal49-tracking-requests-api/)
 - [Terminal49 Containers Transport Events API](https://apis.io/collections/terminal49/open-terminal49-transport-events-api/)
 - [Terminal49 Containers Webhooks API](https://apis.io/collections/terminal49/open-terminal49-webhooks-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Terminal49 API Rules](https://apis.io/rules/terminal49/terminal49-rules/)
 
 #### Security (2)
 
@@ -142,7 +195,14 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 - [Website](https://www.terminal49.com)
 - [Documentation](https://terminal49.com/docs/api-docs/api-reference/introduction)
+- [Getting started](https://terminal49.com/docs/api-docs/getting-started/start-here)
+- [API reference](https://terminal49.com/docs/llms.txt)
+- [Pricing](https://terminal49.com/pricing)
+- [Support](https://help.terminal49.com)
+- [Changelog](https://terminal49.com/changelog)
 - [Blog](https://www.terminal49.com/blog)
+- [Terms of service](https://terminal49.com/terms)
+- [Privacy policy](https://terminal49.com/privacy)
 - [GitHub](https://github.com/Terminal49)
 
 ## API Evangelist rating
