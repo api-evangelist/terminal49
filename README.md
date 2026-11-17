@@ -64,7 +64,7 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Terminal49 automates container and shipment tracking with real‑time visibility across ocean, rail and inland moves. Its v2 REST JSON:API lets shippers, forwarders and logistics software track bills of lading, bookings, container numbers and transport events, delivering normalized milestones, ETAs, terminal availability, holds, demurrage fees and last free day, plus webhooks for instant updates and risk management.
+Terminal49 provides a cloud‑based platform that automates container and shipment tracking with real‑time visibility across ocean, rail, and inland moves. The v2 REST JSON:API enables shippers, freight forwarders, and logistics software to track bills of lading, bookings, container numbers, and transport events, delivering normalized milestones, ETAs, terminal availability, holds, demurrage fees, and last free day. It also offers webhooks for instant updates, risk management tools, a dashboard for analytics, and integrations with AI and custom fields to streamline supply‑chain operations for over 10,000 operators worldwide.
 
 **Areas:** Container Tracking · Ocean Freight · Supply Chain · Logistics · Shipping · Freight
 
@@ -117,13 +117,28 @@ Which operations an agent can call, which act, and which need a human in the loo
 
 - [Terminal49 Agentic Access](https://apis.io/agentic-access/terminal49/terminal49-agentic-access/)
 
-#### JSON Schema (17)
+#### JSON Schema (35)
 
 The data models the API reads and writes.
 
+- [Account model](https://apis.io/schemas/terminal49/terminal49-account/)
 - [Container model](https://apis.io/schemas/terminal49/terminal49-container/)
 - [Current Vessel](https://apis.io/schemas/terminal49/terminal49-current-vessel-feature-properties/)
+- [Custom field](https://apis.io/schemas/terminal49/terminal49-custom-field/)
+- [Custom field definition](https://apis.io/schemas/terminal49/terminal49-custom-field-definition/)
+- [Custom field option](https://apis.io/schemas/terminal49/terminal49-custom-field-option/)
+- [custom_field_value](https://apis.io/schemas/terminal49/terminal49-custom-field-value/)
 - [Document](https://apis.io/schemas/terminal49/terminal49-document/)
+- [Document Representation](https://apis.io/schemas/terminal49/terminal49-document-representation/)
+- [Document Schema](https://apis.io/schemas/terminal49/terminal49-document-schema/)
+- [Email Submission](https://apis.io/schemas/terminal49/terminal49-email-submission/)
+- [Email Submission Document](https://apis.io/schemas/terminal49/terminal49-email-submission-document/)
+- [link](https://apis.io/schemas/terminal49/terminal49-link-self/)
+- [links](https://apis.io/schemas/terminal49/terminal49-links/)
+- [meta](https://apis.io/schemas/terminal49/terminal49-meta/)
+- [Metro area model](https://apis.io/schemas/terminal49/terminal49-metro-area/)
+- [Party model](https://apis.io/schemas/terminal49/terminal49-party/)
+- [Port model](https://apis.io/schemas/terminal49/terminal49-port/)
 - [Raw Event Model](https://apis.io/schemas/terminal49/terminal49-raw-event/)
 - [Shipment model](https://apis.io/schemas/terminal49/terminal49-shipment/)
 - [ShippingLineList](https://apis.io/schemas/terminal49/terminal49-shipping-line-list/)
@@ -131,13 +146,7 @@ The data models the API reads and writes.
 - [TerminalSingle](https://apis.io/schemas/terminal49/terminal49-terminal-single/)
 - [TrackingRequestCreate](https://apis.io/schemas/terminal49/terminal49-tracking-request-create/)
 - [TrackingRequestList](https://apis.io/schemas/terminal49/terminal49-tracking-request-list/)
-- [TrackingRequestSingle](https://apis.io/schemas/terminal49/terminal49-tracking-request-single/)
-- [Transport Event Model](https://apis.io/schemas/terminal49/terminal49-transport-event/)
-- [TransportEventList](https://apis.io/schemas/terminal49/terminal49-transport-event-list/)
-- [WebhookList](https://apis.io/schemas/terminal49/terminal49-webhook-list/)
-- [WebhookNotificationList](https://apis.io/schemas/terminal49/terminal49-webhook-notification-list/)
-- [WebhookNotificationSingle](https://apis.io/schemas/terminal49/terminal49-webhook-notification-single/)
-- [WebhookSingle](https://apis.io/schemas/terminal49/terminal49-webhook-single/)
+- …and 10 more published on APIs.io
 
 #### JSON-LD (1)
 
